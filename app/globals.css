@@ -1,0 +1,197 @@
+/* Sobrevive en la mansión — estilo "Vela": todo oscuro, con un solo color de luz de vela. */
+
+:root {
+  --fondo: #0d0c0b;
+  --fondo-2: #151311;
+  --panel: #1b1815;
+  --linea: #2c2823;
+  --linea-fuerte: #4a443b;
+  --texto: #ece6da;
+  --texto-2: #cfc7b8;
+  --gris: #a79f92;
+  --vela: #e3a947;
+  --vela-clara: #f3c97a;
+  --tinta: #17110a;
+  --serif: 'IM Fell English', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--fondo); color: var(--texto); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+img { max-width: 100%; height: auto; }
+a { color: var(--vela); }
+a:hover { color: var(--vela-clara); }
+:focus-visible { outline: 2px solid var(--vela); outline-offset: 3px; }
+
+/* ---------- piezas comunes ---------- */
+.contenedor { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.contenedor--angosto { max-width: 1148px; }
+.seccion { padding: 120px 0; background: var(--fondo); }
+.seccion--alterna { background: var(--fondo-2); }
+.seccion--linea { border-top: 1px solid var(--linea); }
+.seccion--sin-arriba { padding-top: 40px; }
+.pila { display: flex; flex-direction: column; gap: 56px; }
+.pila--media { gap: 28px; }
+.pila--chica { gap: 22px; }
+.dos-columnas { display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start; }
+.columna-texto { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+
+.etiqueta { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--vela); }
+.etiqueta--gris { color: var(--gris); letter-spacing: 0.24em; }
+.titulo { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 4.4vw, 60px); line-height: 1.08; text-wrap: balance; }
+.subtitulo { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gris); }
+.nombre { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.05; }
+.nombre--grande { font-size: 52px; line-height: 1; }
+.nombre--jefe { font-size: 48px; line-height: 1; }
+.texto-grande { margin: 0; font-size: 18px; color: var(--texto-2); max-width: 60ch; }
+.dato { margin: 6px 0 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gris); }
+.gris { color: var(--gris); }
+.gris-claro { margin: 0; color: var(--texto-2); }
+.acento { color: var(--vela); }
+
+.botones { display: flex; flex-wrap: wrap; gap: 14px; }
+.boton {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 30px;
+  border: 0; border-radius: 4px; background: var(--vela); color: var(--tinta); text-decoration: none;
+  font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+}
+.boton:hover { background: var(--vela-clara); color: var(--tinta); }
+.boton--borde { background: transparent; border: 1px solid rgba(236, 230, 218, 0.45); color: var(--texto); font-weight: 600; padding: 0 26px; }
+.boton--borde:hover { background: rgba(236, 230, 218, 0.08); color: var(--texto); }
+.boton--chico { min-height: 44px; padding: 0 22px; font-size: 13px; letter-spacing: 0.14em; }
+.boton--grande { min-height: 56px; padding: 0 34px; }
+.boton-texto { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--vela); font: inherit; cursor: pointer; }
+
+/* ---------- navegación ---------- */
+.nav { position: relative; z-index: 2; background: var(--fondo); border-bottom: 1px solid var(--linea); }
+.nav__dentro { max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; }
+.nav__logo { display: flex; }
+.nav__logo img { height: 44px; width: auto; }
+.nav__links { display: flex; flex-wrap: wrap; gap: 4px 26px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.nav__links a { color: var(--texto); text-decoration: none; padding: 10px 0; }
+.nav__links a:hover { color: var(--vela); }
+.nav__acciones { display: flex; align-items: center; gap: 14px; }
+.idioma { display: flex; border: 1px solid #3a352e; border-radius: 999px; overflow: hidden; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; }
+.idioma a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; color: var(--gris); text-decoration: none; }
+.idioma a[aria-current] { background: var(--texto); color: var(--fondo); }
+
+/* ---------- portada ---------- */
+.portada { position: relative; overflow: hidden; min-height: 760px; display: flex; align-items: flex-end; }
+.portada__fondo { object-fit: cover; object-position: 70% 40%; }
+.portada__sombra {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(0deg, var(--fondo) 0%, rgba(13, 12, 11, 0) 30%),
+    linear-gradient(90deg, rgba(13, 12, 11, 0.94) 0%, rgba(13, 12, 11, 0.78) 38%, rgba(13, 12, 11, 0.15) 72%, rgba(13, 12, 11, 0) 100%);
+}
+.portada__contenido { position: relative; width: 100%; padding-top: 120px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 28px; }
+.portada__contenido > * { max-width: 600px; }
+.portada__logo { width: 100%; max-width: 560px; height: auto; }
+.portada__bajada { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; }
+.portada__datos { margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); }
+
+/* ---------- historia ---------- */
+.camino { flex: 1 1 380px; min-width: 0; list-style: none; margin: 0; padding: 0; border: 1px solid var(--linea); border-radius: 6px; background: var(--fondo-2); }
+.camino__paso { display: flex; align-items: center; gap: 20px; padding: 20px 24px; border-bottom: 1px solid var(--linea); }
+.camino__paso:last-child { border-bottom: 0; }
+.camino__numero { flex: 0 0 64px; font-family: var(--serif); font-size: 44px; line-height: 1; }
+.camino__texto { flex: 1 1 auto; display: flex; flex-direction: column; }
+.camino__texto strong { font-weight: 600; letter-spacing: 0.04em; }
+.camino__texto span { font-size: 14px; color: var(--gris); }
+.camino__puerta { flex: 0 0 64px; }
+.capturas { margin-top: 80px; display: flex; flex-wrap: wrap; gap: 20px; }
+.captura { flex: 1 1 340px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.captura img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; border: 1px solid var(--linea); }
+.captura figcaption { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); }
+
+/* ---------- personajes ---------- */
+.jonathan { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; padding: 48px; border: 1px solid var(--linea); border-radius: 6px; background: var(--fondo); }
+.jonathan__imagen { flex: 1 1 280px; min-width: 0; min-height: 340px; display: flex; justify-content: center; align-items: flex-end; background: radial-gradient(closest-side, rgba(227, 169, 71, 0.16), rgba(227, 169, 71, 0) 100%); }
+.jonathan__imagen img { width: 260px; height: auto; }
+.jonathan__texto { flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.jonathan__datos { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); }
+.corazones { display: inline-flex; align-items: center; gap: 4px; }
+.corazones > span { margin-left: 8px; }
+.equipo { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px; }
+.equipo li { flex: 1 1 200px; min-width: 0; display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid var(--linea); border-radius: 4px; background: var(--fondo-2); }
+.equipo li > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.equipo strong { font-weight: 600; }
+.equipo .gris { font-size: 14px; line-height: 1.45; }
+.equipo__icono { flex: 0 0 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+
+.tarjetas { display: flex; flex-wrap: wrap; gap: 20px; }
+.tarjeta { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--linea); border-radius: 6px; background: var(--fondo); overflow: hidden; }
+.tarjeta__imagen { height: 240px; padding-bottom: 20px; display: flex; align-items: flex-end; justify-content: center; background: var(--panel); border-bottom: 1px solid var(--linea); }
+.tarjeta__imagen img { height: 190px; width: auto; }
+.tarjeta__imagen--centro { align-items: center; padding-bottom: 0; }
+.tarjeta__imagen--centro img { height: 150px; }
+.tarjeta__texto { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.tarjeta__texto > p:not(.etiqueta):not(.dato) { margin: 0; color: var(--texto-2); }
+.tarjeta .etiqueta { letter-spacing: 0.22em; }
+
+/* ---------- jefes ---------- */
+.jefe { display: flex; flex-wrap: wrap; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; background: var(--fondo); }
+.jefe--invertido { flex-direction: row-reverse; }
+.jefe__imagen { flex: 3 1 520px; min-width: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.jefe__texto { flex: 2 1 360px; min-width: 0; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.jefe__miedo { margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--vela); }
+.vida { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.vida__fila { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gris); }
+.vida__barra { height: 6px; border-radius: 3px; background: var(--linea); }
+.vida__barra > div { height: 6px; border-radius: 3px; background: var(--texto); }
+
+/* ---------- cómo se juega ---------- */
+.teclas { margin: 6px 0 0; border-top: 1px solid var(--linea); }
+.teclas__fila { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--linea); }
+.teclas__fila dt { flex: 0 0 150px; display: flex; gap: 8px; }
+.teclas__fila dd { margin: 0; color: var(--texto-2); }
+.tecla {
+  min-width: 44px; height: 44px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--linea-fuerte); border-bottom-width: 3px; border-radius: 6px; background: var(--panel);
+  font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--texto);
+}
+.tecla--ancha { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+.consejos { flex: 1 1 380px; min-width: 0; align-self: flex-end; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.consejos li { display: flex; gap: 18px; align-items: center; padding: 22px; border: 1px solid var(--linea); border-radius: 6px; background: var(--fondo-2); color: var(--texto-2); }
+.consejos img { flex: 0 0 auto; width: 38px; height: auto; }
+
+/* ---------- jugar ---------- */
+.jugar { display: flex; flex-direction: column; gap: 28px; align-items: center; text-align: center; }
+.jugar__marco { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid #3a352e; border-radius: 6px; overflow: hidden; background: #000; }
+.jugar__fondo { object-fit: cover; opacity: 0.35; filter: blur(2px); }
+.jugar__portada { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 24px; }
+.jugar__logo { width: min(420px, 70%); height: auto; }
+.jugar__aviso { margin: 0; padding: 14px 18px; border: 1px dashed var(--linea-fuerte); border-radius: 4px; background: rgba(13, 12, 11, 0.8); color: var(--texto-2); max-width: 420px; }
+.jugar__juego { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.jugar__notas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 28px; font-size: 14px; color: var(--gris); }
+
+/* ---------- créditos ---------- */
+.creditos { padding: 96px 0 56px; background: var(--fondo); border-top: 1px solid var(--linea); }
+.creditos .pila { gap: 48px; }
+.creditos__arriba { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between; }
+.creditos__arriba > div { display: flex; flex-direction: column; gap: 14px; }
+.creditos__titulo { margin: 0; font-family: var(--serif); font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1; }
+.creditos__logo { width: 260px; height: auto; opacity: 0.9; }
+.creditos__abajo { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--linea); font-size: 13px; color: var(--gris); }
+
+/* ---------- celulares ---------- */
+@media (max-width: 760px) {
+  .seccion { padding: 80px 0; }
+  /* En el celu la imagen queda detrás del texto: se oscurece más para que se pueda leer. */
+  .portada { min-height: 640px; }
+  .portada__fondo { object-position: 78% 20%; }
+  .portada__sombra { background: linear-gradient(0deg, var(--fondo) 0%, rgba(13, 12, 11, 0.88) 50%, rgba(13, 12, 11, 0.35) 100%); }
+  .portada__contenido { padding-top: 200px; padding-bottom: 56px; }
+  .jugar__marco { aspect-ratio: 4 / 3; }
+  .jugar__logo { width: min(240px, 60%); }
+  .jonathan { padding: 28px; gap: 28px; }
+  .jonathan__imagen { min-height: 260px; }
+  .jefe__texto { padding: 28px; }
+  .jefe--invertido { flex-direction: row; }
+  .teclas__fila dt { flex-basis: 110px; }
+  .camino__paso { padding: 16px; gap: 14px; }
+  .camino__numero { flex-basis: 40px; font-size: 36px; }
+}

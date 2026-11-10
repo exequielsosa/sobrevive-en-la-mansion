@@ -1,5 +1,5 @@
-// Los juegos del estudio. Por ahora uno: la ficha de Sobrevive en la mansión y tres capturas.
-// Cuando haya otro juego, se agrega otra ficha abajo de esta.
+// Los juegos del estudio: la ficha del Capítulo 1 (se juega), sus capturas y la ficha del
+// Capítulo 2 (en desarrollo). Cuando haya otro juego, se agrega otra ficha.
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { IconoFlecha, IconoPlay } from '../Iconos';
 export default function Juegos({ t, lang }: { t: TextosEstudio; lang: Idioma }) {
   const j = t.juegos;
   const m = j.mansion;
+  const c2 = j.capitulo2;
   return (
     <section id="juegos" aria-labelledby="t-juegos" className="estudio-seccion">
       <div className="contenedor juegos">
@@ -57,6 +58,21 @@ export default function Juegos({ t, lang }: { t: TextosEstudio; lang: Idioma }) 
             </li>
           ))}
         </ul>
+
+        <article aria-labelledby="t-capitulo2" className="ficha ficha--proxima">
+          <div className="ficha__imagen">
+            <Image src="/img/capitulo2.jpg" alt={c2.imagenAlt} fill sizes="(max-width: 860px) 100vw, 760px" className="ficha__foto" />
+          </div>
+          <div className="ficha__texto ficha__texto--centro">
+            <ul className="ficha__chips">
+              <li>{c2.estado}</li>
+            </ul>
+            <div>
+              <h3 id="t-capitulo2" className="ficha__nombre">{c2.nombre}</h3>
+              <p className="ficha__capitulo">{c2.capitulo}</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );

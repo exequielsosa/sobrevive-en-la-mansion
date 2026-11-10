@@ -70,6 +70,9 @@
 .ficha__nombre { margin: 0; font-family: var(--ancha); font-stretch: 112%; font-weight: 700; font-size: 32px; line-height: 1.15; }
 .ficha__capitulo { margin: 6px 0 0; font-size: 14px; letter-spacing: 0.08em; color: var(--e-gris); }
 .ficha__descripcion { margin: 0; color: var(--e-texto-2); }
+/* Ficha de un juego que todavía no salió: imagen a la derecha y texto centrado. */
+.ficha--proxima { flex-direction: row-reverse; }
+.ficha__texto--centro { justify-content: center; }
 .ficha__acciones { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 
 .enlace-flecha { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--e-texto); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }

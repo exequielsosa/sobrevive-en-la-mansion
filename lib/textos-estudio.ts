@@ -34,6 +34,7 @@ export type TextosEstudio = {
     };
     capturasAria: string;
     capturas: Captura[];
+    capitulo2: { estado: string; nombre: string; capitulo: string; imagenAlt: string };
   };
   estudio: { etiqueta: string; titulo: string; parrafos: string[]; imagenAlt: string; pie: string };
   pie: { derechos: string; otroIdioma: string };
@@ -44,9 +45,9 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     meta: {
       titulo: 'Emi Studio — Juegos para jugar en el navegador',
       descripcion:
-        'Emi Studio: los videojuegos de Emi, gratis para jugar en el navegador. Empezando por Sobrevive en la mansión.',
+        'Emi Studio es un estudio independiente de videojuegos. Su primer juego, Sobrevive en la mansión, se juega gratis en el navegador.',
     },
-    encabezado: 'Emi Studio: los juegos de Emi, gratis para jugar en el navegador',
+    encabezado: 'Emi Studio: estudio independiente de videojuegos',
     barra: { aria: 'Principal', inicio: 'Emi Studio, inicio', juegos: 'Juegos', estudio: 'Estudio', idioma: 'Idioma' },
     destacado: {
       aria: 'Juego destacado',
@@ -60,7 +61,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     },
     juegos: {
       titulo: 'Juegos',
-      cantidad: '01 juego · gratis en el navegador',
+      cantidad: '1 disponible · 1 en desarrollo',
       mansion: {
         disponible: 'Disponible',
         generos: ['Plataformas 2D', 'Terror'],
@@ -78,13 +79,18 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
         { imagen: '/img/captura_piso2.jpg', alt: 'Captura del piso 2: una Cabeza, una Barrada y un 444', pie: 'Piso 2 · Más miedos' },
         { imagen: '/img/captura_piso1.jpg', alt: 'Captura del piso 1: Jonathan con la linterna frente a una manada de 444', pie: 'Piso 1 · A oscuras' },
       ],
+      capitulo2: {
+        estado: 'En desarrollo',
+        nombre: 'Sobrevive en la mansión',
+        capitulo: 'Capítulo 2 · Próximamente',
+        imagenAlt: 'Arte del Capítulo 2: Jonathan escapa corriendo de la mansión, perseguido por la Sombra, el Psicópata y otros monstruos',
+      },
     },
     estudio: {
       etiqueta: 'Estudio',
-      titulo: 'El estudio de videojuegos de Emi.',
+      titulo: 'Un estudio independiente.',
       parrafos: [
-        'Emi inventa las historias, crea los personajes y dirige el arte de cada juego. Cada monstruo empieza en un dibujo suyo, en papel.',
-        'Los juegos se juegan gratis en el navegador, sin instalar nada.',
+        'Emi Studio es un estudio independiente de videojuegos fundado por Emi, director creativo y de arte. Escribe las historias, diseña los personajes y dirige el arte de cada juego.',
       ],
       imagenAlt: 'El Psicópata, con cara de calabaza, una motosierra y un cuchillo, sobre Jonathan',
       pie: 'El Psicópata, jefe final de Sobrevive en la mansión.',
@@ -96,9 +102,9 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     meta: {
       titulo: 'Emi Studio — Games you play in your browser',
       descripcion:
-        "Emi Studio: Emi's video games, free to play right in your browser. Starting with Sobrevive en la mansión (Survive the Mansion).",
+        'Emi Studio is an independent video game studio. Its first game, Sobrevive en la mansión (Survive the Mansion), is free to play in your browser.',
     },
-    encabezado: "Emi Studio: Emi's games, free to play in your browser",
+    encabezado: 'Emi Studio: independent video game studio',
     barra: { aria: 'Main', inicio: 'Emi Studio, home', juegos: 'Games', estudio: 'Studio', idioma: 'Language' },
     destacado: {
       aria: 'Featured game',
@@ -112,7 +118,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     },
     juegos: {
       titulo: 'Games',
-      cantidad: '01 game · free in your browser',
+      cantidad: '1 available · 1 in development',
       mansion: {
         disponible: 'Available',
         generos: ['2D platformer', 'Horror'],
@@ -130,13 +136,18 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
         { imagen: '/img/captura_piso2.jpg', alt: 'Floor 2 screenshot: a Head, a Barrada and a 444', pie: 'Floor 2 · More fears' },
         { imagen: '/img/captura_piso1.jpg', alt: 'Floor 1 screenshot: Jonathan with his flashlight facing a pack of 444s', pie: 'Floor 1 · In the dark' },
       ],
+      capitulo2: {
+        estado: 'In development',
+        nombre: 'Sobrevive en la mansión',
+        capitulo: 'Survive the Mansion · Chapter 2 · Coming soon',
+        imagenAlt: 'Chapter 2 art: Jonathan runs away from the mansion, chased by the Shadow, the Psycho and other monsters',
+      },
     },
     estudio: {
       etiqueta: 'Studio',
-      titulo: "Emi's video game studio.",
+      titulo: 'An independent studio.',
       parrafos: [
-        'Emi comes up with the stories, creates the characters and directs the art of every game. Every monster starts as one of his drawings, on paper.',
-        'The games are free to play in your browser, with nothing to install.',
+        'Emi Studio is an independent video game studio founded by Emi, creative and art director. He writes the stories, designs the characters and directs the art of every game.',
       ],
       imagenAlt: 'The Psycho, with a pumpkin face, a chainsaw and a knife, looming over Jonathan',
       pie: 'The Psycho, final boss of Sobrevive en la mansión.',

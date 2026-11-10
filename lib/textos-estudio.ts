@@ -1,4 +1,4 @@
-// Textos de la portada de Emi Games (la página del estudio), en español y en inglés.
+// Textos de la portada de Emi Studio (la página del estudio), en español y en inglés.
 // Para cambiar una frase, se cambia acá; los componentes solo la muestran.
 
 import type { Idioma } from './idiomas';
@@ -41,11 +41,11 @@ export type TextosEstudio = {
 export const textosEstudio: Record<Idioma, TextosEstudio> = {
   es: {
     meta: {
-      titulo: 'Emi Games — Juegos para jugar en el navegador',
+      titulo: 'Emi Studio — Juegos para jugar en el navegador',
       descripcion:
-        'Emi Games es el estudio de videojuegos de Emi. Juegos gratis para jugar en el navegador, empezando por Sobrevive en la mansión.',
+        'Emi Studio: los videojuegos de Emi, gratis para jugar en el navegador. Empezando por Sobrevive en la mansión.',
     },
-    barra: { aria: 'Principal', inicio: 'Emi Games, inicio', juegos: 'Juegos', estudio: 'Estudio', idioma: 'Idioma' },
+    barra: { aria: 'Principal', inicio: 'Emi Studio, inicio', juegos: 'Juegos', estudio: 'Estudio', idioma: 'Idioma' },
     destacado: {
       aria: 'Juego destacado',
       etiqueta: 'Nuevo juego · Ya se puede jugar',
@@ -79,7 +79,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     },
     estudio: {
       etiqueta: 'Estudio',
-      titulo: 'Emi Games es el estudio de Emi.',
+      titulo: 'El estudio de videojuegos de Emi.',
       parrafos: [
         'Emi inventa las historias, crea los personajes y dirige el arte de cada juego. Cada monstruo empieza en un dibujo suyo, en papel.',
         'Los juegos se juegan gratis en el navegador, sin instalar nada.',
@@ -87,16 +87,16 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       imagenAlt: 'El Psicópata, con cara de calabaza, una motosierra y un cuchillo, sobre Jonathan',
       pie: 'El Psicópata, jefe final de Sobrevive en la mansión.',
     },
-    pie: { derechos: '© 2026 Emi Games', otroIdioma: 'English' },
+    pie: { derechos: '© 2026 Emi Studio', otroIdioma: 'English' },
   },
 
   en: {
     meta: {
-      titulo: 'Emi Games — Games you play in your browser',
+      titulo: 'Emi Studio — Games you play in your browser',
       descripcion:
-        "Emi Games is Emi's video game studio. Free games you play right in your browser, starting with Sobrevive en la mansión (Survive the Mansion).",
+        "Emi Studio: Emi's video games, free to play right in your browser. Starting with Sobrevive en la mansión (Survive the Mansion).",
     },
-    barra: { aria: 'Main', inicio: 'Emi Games, home', juegos: 'Games', estudio: 'Studio', idioma: 'Language' },
+    barra: { aria: 'Main', inicio: 'Emi Studio, home', juegos: 'Games', estudio: 'Studio', idioma: 'Language' },
     destacado: {
       aria: 'Featured game',
       etiqueta: 'New game · Play it now',
@@ -130,7 +130,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     },
     estudio: {
       etiqueta: 'Studio',
-      titulo: "Emi Games is Emi's studio.",
+      titulo: "Emi's video game studio.",
       parrafos: [
         'Emi comes up with the stories, creates the characters and directs the art of every game. Every monster starts as one of his drawings, on paper.',
         'The games are free to play in your browser, with nothing to install.',
@@ -138,6 +138,6 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       imagenAlt: 'The Psycho, with a pumpkin face, a chainsaw and a knife, looming over Jonathan',
       pie: 'The Psycho, final boss of Sobrevive en la mansión.',
     },
-    pie: { derechos: '© 2026 Emi Games', otroIdioma: 'Español' },
+    pie: { derechos: '© 2026 Emi Studio', otroIdioma: 'Español' },
   },
 };

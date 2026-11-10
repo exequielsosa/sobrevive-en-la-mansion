@@ -1,6 +1,6 @@
-# Emi Games — sitio del estudio
+# Emi Studio — sitio del estudio
 
-Sitio de **Emi Games**, el estudio de Emi. Tiene dos páginas, en español (`/es`) y en inglés (`/en`):
+Sitio de **Emi Studio**, el estudio de Emi. Tiene dos páginas, en español (`/es`) y en inglés (`/en`):
 
 | Dirección | Qué es |
 |---|---|
@@ -28,7 +28,7 @@ link corto para compartir el juego.
 | `lib/textos-estudio.ts` | **Los textos de la portada del estudio**, en español y en inglés. |
 | `lib/textos-mansion.ts` | **Los textos de la página de la mansión**, en español y en inglés. |
 | `lib/idiomas.ts` | Los idiomas del sitio (`es` y `en`). |
-| `components/estudio/` | Las piezas de la portada: `Barra`, `Destacado`, `Juegos`, `SobreEstudio`, `Pie` y `Marca` (el nombre "EMI GAMES"). |
+| `components/estudio/` | Las piezas de la portada: `Barra`, `Destacado`, `Juegos`, `SobreEstudio`, `Pie` y `Marca` (el nombre "EMI STUDIO"). |
 | `components/mansion/` | Las piezas de la página del juego: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `Creditos`. |
 | `app/[lang]/` | El layout (idioma y fuentes), la portada (`page.tsx`) y la página del juego (`mansion/page.tsx`). Cada página pone su título y su vista previa para redes. |
 | `app/globals.css` | El estilo de la mansión ("Vela") y las piezas comunes, como los botones. |

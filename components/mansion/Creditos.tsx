@@ -19,7 +19,7 @@ export default function Creditos({ t, lang }: { t: Textos; lang: Idioma }) {
         <div className="creditos__abajo">
           <span>{c.capitulo}</span>
           {/* Vuelve a la portada del estudio. */}
-          <Link href={`/${lang}`} className="creditos__estudio">Emi Games</Link>
+          <Link href={`/${lang}`} className="creditos__estudio">Emi Studio</Link>
         </div>
       </div>
     </footer>

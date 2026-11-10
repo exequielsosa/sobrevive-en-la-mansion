@@ -27,7 +27,7 @@ export const viewport: Viewport = { themeColor: '#0b0b0c' };
 const dominio = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 export const metadata: Metadata = {
   metadataBase: new URL(dominio ? `https://${dominio}` : 'http://localhost:3000'),
-  title: { default: 'Emi Games', template: '%s | Emi Games' },
+  title: { default: 'Emi Studio', template: '%s | Emi Studio' },
 };
 
 export default async function Layout({ children, params }: Props) {

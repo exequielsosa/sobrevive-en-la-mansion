@@ -1,4 +1,4 @@
-/* Emi Games — portada del estudio. Estilo "Sala": oscuro y neutro, para que se luzca el arte.
+/* Emi Studio — portada del estudio. Estilo "Sala": oscuro y neutro, para que se luzca el arte.
    El estudio no tiene color propio: cada juego trae el suyo (la mansión, el ámbar de vela).
    Los botones (.boton), el contenedor y el selector de idioma son los de globals.css. */
 
@@ -18,12 +18,12 @@
 /* ---------- el nombre del estudio ---------- */
 .marca { display: inline-flex; align-items: baseline; gap: 0.45em; font-family: var(--ancha); font-stretch: 125%; line-height: 1; letter-spacing: 0.02em; color: var(--e-texto); }
 .marca__emi { font-weight: 900; }
-.marca__games { font-weight: 300; letter-spacing: 0.28em; }
+.marca__studio { font-weight: 300; letter-spacing: 0.28em; }
 /* En el pie ocupa todo el ancho: el tamaño de la letra sale del ancho de la caja que la contiene
-   (cqi = 1% de ese ancho). "EMI GAMES" mide unas 8,6 veces el tamaño de la letra. */
+   (cqi = 1% de ese ancho). "EMI STUDIO" mide unas 8,6 veces el tamaño de la letra. */
 .pie__marca { container-type: inline-size; }
 .marca--gigante { display: flex; justify-content: space-between; white-space: nowrap; font-size: calc(100cqi / 8.8); line-height: 0.82; letter-spacing: -0.01em; }
-.marca--gigante .marca__games { letter-spacing: 0.2em; margin-right: -0.2em; }
+.marca--gigante .marca__studio { letter-spacing: 0.2em; margin-right: -0.2em; }
 
 /* ---------- barra ---------- */
 .barra { background: var(--e-fondo); border-bottom: 1px solid var(--e-linea); }

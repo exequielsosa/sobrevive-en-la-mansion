@@ -1,4 +1,4 @@
-// El pie del estudio: "EMI GAMES" gigante (la idea del afiche) y una fila con links.
+// El pie del estudio: "EMI STUDIO" gigante (la idea del afiche) y una fila con links.
 
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idiomas';

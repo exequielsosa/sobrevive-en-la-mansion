@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t.titulo,
       description: t.descripcion,
       url: `/${lang}/mansion`,
-      siteName: 'Emi Games',
+      siteName: 'Emi Studio',
       images: [{ url: '/og.jpg', width: 1200, height: 630 }],
       locale: lang === 'es' ? 'es_AR' : 'en_US',
       type: 'website',

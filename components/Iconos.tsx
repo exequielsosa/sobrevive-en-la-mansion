@@ -8,6 +8,14 @@ export function IconoPlay() {
   );
 }
 
+export function IconoFlecha() {
+  return (
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 8h10M9 4l4 4-4 4" />
+    </svg>
+  );
+}
+
 export function IconoLinterna() {
   return (
     <svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">

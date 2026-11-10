@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import type { Textos } from '@/lib/textos';
-import { IconoPlay } from './Iconos';
+import type { Textos } from '@/lib/textos-mansion';
+import { IconoPlay } from '../Iconos';
 
 export default function Portada({ t }: { t: Textos }) {
   return (

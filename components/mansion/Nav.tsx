@@ -6,7 +6,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Idioma, Textos } from '@/lib/textos';
+import type { Idioma } from '@/lib/idiomas';
+import type { Textos } from '@/lib/textos-mansion';
 
 export default function Nav({ t, lang }: { t: Textos; lang: Idioma }) {
   const [abierto, setAbierto] = useState(false);
@@ -26,8 +27,8 @@ export default function Nav({ t, lang }: { t: Textos; lang: Idioma }) {
         </div>
         <div className="nav__acciones">
           <div role="group" aria-label={t.nav.idioma} className="idioma">
-            <Link href="/es" aria-current={lang === 'es' ? 'true' : undefined} hrefLang="es">ES</Link>
-            <Link href="/en" aria-current={lang === 'en' ? 'true' : undefined} hrefLang="en">EN</Link>
+            <Link href="/es/mansion" aria-current={lang === 'es' ? 'true' : undefined} hrefLang="es">ES</Link>
+            <Link href="/en/mansion" aria-current={lang === 'en' ? 'true' : undefined} hrefLang="en">EN</Link>
           </div>
           <a href="#jugar" className="boton boton--chico nav__jugar">{t.nav.jugar}</a>
           <button

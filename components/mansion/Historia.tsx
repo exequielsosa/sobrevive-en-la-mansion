@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Textos } from '@/lib/textos';
+import type { Textos } from '@/lib/textos-mansion';
 
 const llaves = ['/img/llave_1.png', '/img/llave_2.png', '/img/llave_3.png'];
 const capturas = ['/img/captura_piso3.jpg', '/img/captura_piso2.jpg', '/img/captura_piso1.jpg'];

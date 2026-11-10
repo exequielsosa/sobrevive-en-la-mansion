@@ -1,12 +1,7 @@
-// Todos los textos de la página, en español y en inglés.
+// Todos los textos de la página de Sobrevive en la mansión, en español y en inglés.
 // Para cambiar una frase, se cambia acá; los componentes solo la muestran.
 
-export const idiomas = ['es', 'en'] as const;
-export type Idioma = (typeof idiomas)[number];
-
-export function esIdioma(valor: string): valor is Idioma {
-  return (idiomas as readonly string[]).includes(valor);
-}
+import type { Idioma } from './idiomas';
 
 export type IdEnemigo = 'cabeza' | 'cuatro' | 'barrada';
 export type IdJefe = 'sombra' | 'stalker' | 'psicopata';

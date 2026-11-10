@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { IdJefe, Textos } from '@/lib/textos';
+import type { IdJefe, Textos } from '@/lib/textos-mansion';
 
 // La barra de vida se compara con el jefe más fuerte (el Psicópata, 70).
 const jefes: { id: IdJefe; img: string; vida: number }[] = [

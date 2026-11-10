@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import type { IdEnemigo, Textos } from '@/lib/textos';
-import { IconoLinterna } from './Iconos';
+import type { IdEnemigo, Textos } from '@/lib/textos-mansion';
+import { IconoLinterna } from '../Iconos';
 
 // Imagen y tamaño de cada enemigo (no cambian con el idioma).
 const enemigos: { id: IdEnemigo; img: string; ancho: number; alto: number }[] = [

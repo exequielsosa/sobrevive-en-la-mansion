@@ -6,8 +6,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import type { Textos } from '@/lib/textos';
-import { IconoPantallaCompleta, IconoPlay } from './Iconos';
+import type { Textos } from '@/lib/textos-mansion';
+import { IconoPantallaCompleta, IconoPlay } from '../Iconos';
 
 export default function Jugar({ t }: { t: Textos }) {
   const j = t.jugar;

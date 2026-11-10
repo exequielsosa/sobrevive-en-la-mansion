@@ -1,8 +1,13 @@
-# Sobrevive en la mansión — página del juego
+# Emi Games — sitio del estudio
 
-Página web de **Sobrevive en la mansión — Capítulo 1**, un juego de Emi hecho con Construct 2.
-Tiene la historia, los personajes, cómo se juega y el juego para jugar en el navegador.
-Está en español (`/es`) y en inglés (`/en`).
+Sitio de **Emi Games**, el estudio de Emi. Tiene dos páginas, en español (`/es`) y en inglés (`/en`):
+
+| Dirección | Qué es |
+|---|---|
+| `/es`, `/en` | La portada del estudio: el juego destacado, la lista de juegos y quién es Emi. |
+| `/es/mansion`, `/en/mansion` | La página de **Sobrevive en la mansión — Capítulo 1**: historia, personajes, cómo se juega y el juego para jugar en el navegador. |
+
+Cada juego nuevo va a tener su propia página adentro, como `/mansion`.
 
 ## Cómo correrla
 
@@ -12,17 +17,24 @@ npm run dev      # http://localhost:3000
 npm run build    # para revisar que compila antes de publicar
 ```
 
-La raíz `/` manda a `/en` si el navegador está en inglés, y a `/es` en cualquier otro caso (`next.config.ts`).
+Las direcciones sin idioma (`/` y `/mansion`) mandan a la versión en inglés si el navegador está en
+inglés, y a la española en cualquier otro caso (`next.config.ts`). Por eso `/mansion` sirve como
+link corto para compartir el juego.
 
 ## Dónde está cada cosa
 
 | Carpeta | Qué hay |
 |---|---|
-| `lib/textos.ts` | **Todos los textos**, en español y en inglés. Para cambiar una frase, se cambia acá. |
-| `components/` | Una pieza por sección: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `Creditos`. |
-| `app/[lang]/` | La página y el layout (idioma, título y vista previa para redes). |
-| `app/globals.css` | Todo el estilo. Los colores están arriba de todo, como variables. |
-| `public/img/` | El arte de Emi que usa la página. |
+| `lib/textos-estudio.ts` | **Los textos de la portada del estudio**, en español y en inglés. |
+| `lib/textos-mansion.ts` | **Los textos de la página de la mansión**, en español y en inglés. |
+| `lib/idiomas.ts` | Los idiomas del sitio (`es` y `en`). |
+| `components/estudio/` | Las piezas de la portada: `Barra`, `Destacado`, `Juegos`, `SobreEstudio`, `Pie` y `Marca` (el nombre "EMI GAMES"). |
+| `components/mansion/` | Las piezas de la página del juego: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `Creditos`. |
+| `app/[lang]/` | El layout (idioma y fuentes), la portada (`page.tsx`) y la página del juego (`mansion/page.tsx`). Cada página pone su título y su vista previa para redes. |
+| `app/globals.css` | El estilo de la mansión ("Vela") y las piezas comunes, como los botones. |
+| `app/estudio.css` | El estilo de la portada del estudio ("Sala"): oscuro y neutro, cada juego trae su color. |
+| `public/img/` | El arte de Emi que usan las páginas. |
+| `public/og.jpg`, `public/og-estudio.jpg` | Las imágenes que aparecen al compartir el link (la del juego y la del estudio). |
 | `public/juego/` | El juego exportado desde Construct 2. |
 | `scripts/preparar-juego.mjs` | Ajusta una exportación nueva del juego para la web. |
 

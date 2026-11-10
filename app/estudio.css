@@ -1,0 +1,116 @@
+/* Emi Games — portada del estudio. Estilo "Sala": oscuro y neutro, para que se luzca el arte.
+   El estudio no tiene color propio: cada juego trae el suyo (la mansión, el ámbar de vela).
+   Los botones (.boton), el contenedor y el selector de idioma son los de globals.css. */
+
+.estudio-pagina {
+  --e-fondo: #0b0b0c;
+  --e-fondo-2: #101011;
+  --e-panel: #141415;
+  --e-linea: #26262a;
+  --e-texto: #f2f1ee;
+  --e-texto-2: #c9c8c4;
+  --e-gris: #8a8a90;
+  --ancha: 'Archivo Variable', var(--sans);
+  background: var(--e-fondo);
+  color: var(--e-texto);
+}
+
+/* ---------- el nombre del estudio ---------- */
+.marca { display: inline-flex; align-items: baseline; gap: 0.45em; font-family: var(--ancha); font-stretch: 125%; line-height: 1; letter-spacing: 0.02em; color: var(--e-texto); }
+.marca__emi { font-weight: 900; }
+.marca__games { font-weight: 300; letter-spacing: 0.28em; }
+/* En el pie ocupa todo el ancho: el tamaño de la letra sale del ancho de la caja que la contiene
+   (cqi = 1% de ese ancho). "EMI GAMES" mide unas 8,6 veces el tamaño de la letra. */
+.pie__marca { container-type: inline-size; }
+.marca--gigante { display: flex; justify-content: space-between; white-space: nowrap; font-size: calc(100cqi / 8.8); line-height: 0.82; letter-spacing: -0.01em; }
+.marca--gigante .marca__games { letter-spacing: 0.2em; margin-right: -0.2em; }
+
+/* ---------- barra ---------- */
+.barra { background: var(--e-fondo); border-bottom: 1px solid var(--e-linea); }
+.barra__dentro { max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 12px 32px; }
+.barra__marca { display: inline-flex; align-items: center; min-height: 44px; font-size: 22px; text-decoration: none; }
+.barra__links { margin-left: auto; display: flex; gap: 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.barra__links a { color: var(--e-texto); text-decoration: none; padding: 12px 0; }
+.barra__links a:hover { color: var(--vela); }
+
+/* ---------- juego destacado ---------- */
+.destacado { position: relative; overflow: hidden; min-height: 720px; display: flex; align-items: flex-end; }
+.destacado__fondo { object-fit: cover; object-position: 70% 40%; }
+.destacado__sombra {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(0deg, var(--e-fondo) 0%, rgba(11, 11, 12, 0) 28%),
+    linear-gradient(90deg, rgba(11, 11, 12, 0.95) 0%, rgba(11, 11, 12, 0.8) 36%, rgba(11, 11, 12, 0.12) 70%, rgba(11, 11, 12, 0) 100%);
+}
+.destacado__contenido { position: relative; width: 100%; padding-top: 120px; padding-bottom: 88px; }
+.destacado__texto { max-width: 560px; display: flex; flex-direction: column; gap: 22px; }
+.destacado__etiqueta { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #d9d8d4; }
+.destacado__etiqueta::before { content: ''; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--vela); }
+.destacado__logo { width: 100%; max-width: 460px; height: auto; }
+.destacado__bajada { margin: 0; font-size: 20px; line-height: 1.5; color: #e6e5e1; }
+.destacado__datos { margin: 0; font-size: 13px; letter-spacing: 0.06em; color: #a3a3a8; }
+
+/* ---------- secciones ---------- */
+.estudio-seccion { padding: 104px 0 112px; }
+.estudio-seccion--linea { border-top: 1px solid var(--e-linea); }
+
+/* ---------- juegos ---------- */
+.juegos { display: flex; flex-direction: column; gap: 40px; }
+.juegos__cabeza { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--e-linea); }
+.juegos__titulo { margin: 0; font-family: var(--ancha); font-stretch: 125%; font-weight: 800; font-size: clamp(40px, 5vw, 56px); line-height: 1; letter-spacing: -0.01em; }
+.juegos__cantidad { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--e-gris); }
+
+.ficha { display: flex; flex-wrap: wrap; background: var(--e-panel); border: 1px solid var(--e-linea); border-radius: 6px; overflow: hidden; }
+.ficha__imagen { flex: 3 1 480px; min-width: 0; position: relative; aspect-ratio: 16 / 9; background: #000; }
+.ficha__foto { object-fit: cover; }
+.ficha__texto { flex: 2 1 340px; min-width: 0; padding: 36px 36px 32px; display: flex; flex-direction: column; gap: 18px; }
+.ficha__chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.ficha__chips li { padding: 5px 10px; border-radius: 999px; border: 1px solid #36363b; color: var(--e-texto-2); }
+.ficha__chips .ficha__disponible { background: var(--vela); border-color: var(--vela); color: var(--tinta); }
+.ficha__nombre { margin: 0; font-family: var(--ancha); font-stretch: 112%; font-weight: 700; font-size: 32px; line-height: 1.15; }
+.ficha__capitulo { margin: 6px 0 0; font-size: 14px; letter-spacing: 0.08em; color: var(--e-gris); }
+.ficha__descripcion { margin: 0; color: var(--e-texto-2); }
+.ficha__acciones { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+
+.enlace-flecha { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--e-texto); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.enlace-flecha:hover { color: var(--vela); }
+
+.galeria { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.galeria figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.galeria img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; }
+.galeria figcaption { font-size: 13px; letter-spacing: 0.08em; color: var(--e-gris); }
+
+/* ---------- estudio ---------- */
+.sobre { display: flex; flex-wrap: wrap; align-items: center; gap: 48px 72px; }
+.sobre__texto { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.sobre__texto p { margin: 0; font-size: 18px; color: var(--e-texto-2); }
+.sobre__texto .sobre__etiqueta { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--e-gris); }
+.sobre__titulo { margin: 0; font-family: var(--ancha); font-stretch: 112%; font-weight: 800; font-size: clamp(32px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+.sobre__imagen { flex: 1 1 440px; min-width: 0; margin: 0; }
+.sobre__imagen img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; }
+.sobre__imagen figcaption { margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; color: var(--e-gris); }
+
+/* ---------- pie ---------- */
+.pie { background: var(--e-fondo-2); border-top: 1px solid var(--e-linea); }
+.pie__dentro { max-width: 1280px; margin: 0 auto; padding: 88px 24px 32px; display: flex; flex-direction: column; gap: 28px; }
+.pie__abajo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding-top: 22px; border-top: 1px solid var(--e-linea); font-size: 13px; color: var(--e-gris); }
+.pie__links { display: flex; flex-wrap: wrap; gap: 0 24px; letter-spacing: 0.12em; text-transform: uppercase; }
+.pie__links a { color: var(--e-texto-2); text-decoration: none; padding: 12px 0; }
+.pie__links a:hover { color: var(--e-texto); }
+
+/* ---------- celulares ---------- */
+@media (max-width: 760px) {
+  .estudio-seccion { padding: 72px 0 80px; }
+  .destacado { min-height: 620px; }
+  .destacado__fondo { object-position: 78% 20%; }
+  .destacado__sombra { background: linear-gradient(0deg, var(--e-fondo) 0%, rgba(11, 11, 12, 0.88) 50%, rgba(11, 11, 12, 0.35) 100%); }
+  .destacado__contenido { padding-top: 200px; padding-bottom: 56px; }
+  .destacado__bajada { font-size: 18px; }
+  .ficha__texto { padding: 24px; }
+  .pie__dentro { padding: 64px 16px 24px; }
+}
+@media (max-width: 600px) {
+  .barra__dentro { justify-content: space-between; padding: 10px 16px; }
+  .barra__links { display: none; }
+  .barra__marca { font-size: 18px; }
+}

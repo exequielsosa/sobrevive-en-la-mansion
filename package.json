@@ -10,6 +10,7 @@
     "preparar-juego": "node scripts/preparar-juego.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
     "@fontsource/im-fell-english": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "next": "16.4.6",

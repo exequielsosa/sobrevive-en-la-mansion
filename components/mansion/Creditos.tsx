@@ -1,7 +1,9 @@
 import Image from 'next/image';
-import type { Textos } from '@/lib/textos';
+import Link from 'next/link';
+import type { Idioma } from '@/lib/idiomas';
+import type { Textos } from '@/lib/textos-mansion';
 
-export default function Creditos({ t }: { t: Textos }) {
+export default function Creditos({ t, lang }: { t: Textos; lang: Idioma }) {
   const c = t.creditos;
   return (
     <footer id="creditos" aria-labelledby="t-creditos" className="creditos">
@@ -16,6 +18,8 @@ export default function Creditos({ t }: { t: Textos }) {
         </div>
         <div className="creditos__abajo">
           <span>{c.capitulo}</span>
+          {/* Vuelve a la portada del estudio. */}
+          <Link href={`/${lang}`} className="creditos__estudio">Emi Games</Link>
         </div>
       </div>
     </footer>

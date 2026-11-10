@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Textos } from '@/lib/textos';
+import type { Textos } from '@/lib/textos-mansion';
 
 const iconosConsejos = [
   { src: '/img/llave_1.png', ancho: 38, alto: 22 },

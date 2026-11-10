@@ -7,6 +7,7 @@ type Captura = { imagen: string; alt: string; pie: string };
 
 export type TextosEstudio = {
   meta: { titulo: string; descripcion: string };
+  encabezado: string;
   barra: { aria: string; inicio: string; juegos: string; estudio: string; idioma: string };
   destacado: {
     aria: string;
@@ -45,6 +46,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       descripcion:
         'Emi Studio: los videojuegos de Emi, gratis para jugar en el navegador. Empezando por Sobrevive en la mansión.',
     },
+    encabezado: 'Emi Studio: los juegos de Emi, gratis para jugar en el navegador',
     barra: { aria: 'Principal', inicio: 'Emi Studio, inicio', juegos: 'Juegos', estudio: 'Estudio', idioma: 'Idioma' },
     destacado: {
       aria: 'Juego destacado',
@@ -96,6 +98,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       descripcion:
         "Emi Studio: Emi's video games, free to play right in your browser. Starting with Sobrevive en la mansión (Survive the Mansion).",
     },
+    encabezado: "Emi Studio: Emi's games, free to play in your browser",
     barra: { aria: 'Main', inicio: 'Emi Studio, home', juegos: 'Games', estudio: 'Studio', idioma: 'Language' },
     destacado: {
       aria: 'Featured game',

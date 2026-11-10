@@ -10,6 +10,7 @@ import '@fontsource-variable/archivo/wdth.css';
 import '../globals.css';
 import '../estudio.css';
 import { esIdioma, idiomas } from '@/lib/idiomas';
+import { NOMBRE_ESTUDIO, URL_SITIO } from '@/lib/sitio';
 
 type Props = { children: React.ReactNode; params: Promise<{ lang: string }> };
 
@@ -22,12 +23,11 @@ export function generateStaticParams() {
 export const viewport: Viewport = { themeColor: '#0b0b0c' };
 
 // Lo que comparten todas las páginas. El título y la descripción los pone cada página.
-// En Vercel, VERCEL_PROJECT_PRODUCTION_URL es el dominio publicado; sirve para armar
-// la dirección completa de la imagen que aparece al compartir el link en redes.
-const dominio = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+// metadataBase sirve para armar las direcciones completas (la oficial de cada página,
+// la imagen que aparece al compartir el link en redes).
 export const metadata: Metadata = {
-  metadataBase: new URL(dominio ? `https://${dominio}` : 'http://localhost:3000'),
-  title: { default: 'Emi Studio', template: '%s | Emi Studio' },
+  metadataBase: new URL(URL_SITIO),
+  title: { default: NOMBRE_ESTUDIO, template: `%s | ${NOMBRE_ESTUDIO}` },
 };
 
 export default async function Layout({ children, params }: Props) {

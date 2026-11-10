@@ -10,6 +10,9 @@ import Jefes from '@/components/mansion/Jefes';
 import ComoSeJuega from '@/components/mansion/ComoSeJuega';
 import Jugar from '@/components/mansion/Jugar';
 import Creditos from '@/components/mansion/Creditos';
+import DatosEstructurados from '@/components/DatosEstructurados';
+import { datosMansion } from '@/lib/datos-estructurados';
+import { NOMBRE_ESTUDIO } from '@/lib/sitio';
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -20,12 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t.titulo,
     description: t.descripcion,
-    alternates: { canonical: `/${lang}/mansion`, languages: { es: '/es/mansion', en: '/en/mansion' } },
+    alternates: { canonical: `/${lang}/mansion`, languages: { es: '/es/mansion', en: '/en/mansion', 'x-default': '/es/mansion' } },
     openGraph: {
       title: t.titulo,
       description: t.descripcion,
       url: `/${lang}/mansion`,
-      siteName: 'Emi Studio',
+      siteName: NOMBRE_ESTUDIO,
       images: [{ url: '/og.jpg', width: 1200, height: 630 }],
       locale: lang === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
@@ -50,6 +53,7 @@ export default async function Pagina({ params }: Props) {
         <Jugar t={t} />
       </main>
       <Creditos t={t} lang={lang} />
+      <DatosEstructurados datos={datosMansion(lang, t.meta.descripcion)} />
     </>
   );
 }

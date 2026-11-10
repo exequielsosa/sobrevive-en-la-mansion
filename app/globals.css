@@ -51,6 +51,8 @@ a:hover { color: var(--vela-clara); }
 .gris { color: var(--gris); }
 .gris-claro { margin: 0; color: var(--texto-2); }
 .acento { color: var(--vela); }
+/* Texto que no se ve pero leen Google y los lectores de pantalla. */
+.solo-lectores { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 .botones { display: flex; flex-wrap: wrap; gap: 14px; }
 .boton {
@@ -107,7 +109,8 @@ a:hover { color: var(--vela-clara); }
 }
 .portada__contenido { position: relative; width: 100%; padding-top: 120px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 28px; }
 .portada__contenido > * { max-width: 600px; }
-.portada__logo { width: 100%; max-width: 560px; height: auto; }
+.portada__titulo { margin: 0; line-height: 0; }
+.portada__logo { display: block; width: 100%; max-width: 560px; height: auto; }
 .portada__bajada { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; }
 .portada__datos { margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); }
 

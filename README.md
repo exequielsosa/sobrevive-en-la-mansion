@@ -28,6 +28,9 @@ link corto para compartir el juego.
 | `lib/textos-estudio.ts` | **Los textos de la portada del estudio**, en español y en inglés. |
 | `lib/textos-mansion.ts` | **Los textos de la página de la mansión**, en español y en inglés. |
 | `lib/idiomas.ts` | Los idiomas del sitio (`es` y `en`). |
+| `lib/sitio.ts` | La dirección pública del sitio y el nombre del estudio. |
+| `app/sitemap.ts`, `app/robots.ts` | Arman `/sitemap.xml` (la lista de páginas para Google) y `/robots.txt`. **Cuando haya un juego nuevo, se agrega su ruta en `sitemap.ts`.** |
+| `lib/datos-estructurados.ts` | La "ficha invisible" para Google de cada página (qué es el estudio, qué es el juego). |
 | `components/estudio/` | Las piezas de la portada: `Barra`, `Destacado`, `Juegos`, `SobreEstudio`, `Pie` y `Marca` (el nombre "EMI STUDIO"). |
 | `components/mansion/` | Las piezas de la página del juego: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `Creditos`. |
 | `app/[lang]/` | El layout (idioma y fuentes), la portada (`page.tsx`) y la página del juego (`mansion/page.tsx`). Cada página pone su título y su vista previa para redes. |

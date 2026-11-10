@@ -16,7 +16,7 @@ type FichaJefe = Ficha & { piso: string; ataque: string };
 
 export type Textos = {
   meta: { titulo: string; descripcion: string };
-  nav: { aria: string; historia: string; personajes: string; como: string; creditos: string; jugar: string; idioma: string };
+  nav: { aria: string; historia: string; personajes: string; como: string; creditos: string; jugar: string; idioma: string; menu: string };
   portada: { aria: string; logoAlt: string; fondoAlt: string; bajada: string; jugar: string; personajes: string; datos: string };
   historia: {
     etiqueta: string;
@@ -76,6 +76,7 @@ export const textos: Record<Idioma, Textos> = {
       creditos: 'Créditos',
       jugar: 'Jugar',
       idioma: 'Idioma',
+      menu: 'Menú',
     },
     portada: {
       aria: 'Portada',
@@ -227,6 +228,7 @@ export const textos: Record<Idioma, Textos> = {
       creditos: 'Credits',
       jugar: 'Play',
       idioma: 'Language',
+      menu: 'Menu',
     },
     portada: {
       aria: 'Home',

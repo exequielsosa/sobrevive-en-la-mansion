@@ -77,6 +77,24 @@ a:hover { color: var(--vela-clara); }
 .idioma { display: flex; border: 1px solid #3a352e; border-radius: 999px; overflow: hidden; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; }
 .idioma a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; color: var(--gris); text-decoration: none; }
 .idioma a[aria-current] { background: var(--texto); color: var(--fondo); }
+.nav__menu { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid #3a352e; border-radius: 4px; background: transparent; color: var(--texto); cursor: pointer; }
+
+/* En el celu: una sola fila (logo, idioma y menú). Los links se abren hacia abajo con el botón. */
+@media (max-width: 760px) {
+  .nav__dentro { flex-wrap: nowrap; padding: 10px 16px; }
+  .nav__logo img { height: 36px; width: auto; }
+  .nav__jugar { display: none; }
+  .nav__menu { display: inline-flex; }
+  .nav__acciones { gap: 10px; }
+  .nav__links { display: none; }
+  .nav__links--abierto {
+    display: flex; flex-direction: column; gap: 0;
+    position: absolute; top: 100%; left: 0; right: 0;
+    padding: 4px 16px 12px; background: var(--fondo); border-bottom: 1px solid var(--linea);
+  }
+  .nav__links--abierto a { padding: 14px 0; border-bottom: 1px solid var(--linea); }
+  .nav__links--abierto a:last-child { border-bottom: 0; }
+}
 
 /* ---------- portada ---------- */
 .portada { position: relative; overflow: hidden; min-height: 760px; display: flex; align-items: flex-end; }

@@ -15,7 +15,6 @@ export default function Creditos({ t }: { t: Textos }) {
           <Image src="/img/logo.png" alt={t.portada.logoAlt} width={260} height={132} className="creditos__logo" />
         </div>
         <div className="creditos__abajo">
-          <span>{c.hecho}</span>
           <span>{c.capitulo}</span>
         </div>
       </div>

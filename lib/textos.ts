@@ -58,7 +58,7 @@ export type Textos = {
     notas: string[];
     celular: string;
   };
-  creditos: { etiqueta: string; titulo: string; detalle: string; hecho: string; capitulo: string };
+  creditos: { etiqueta: string; titulo: string; detalle: string; capitulo: string };
 };
 
 export const textos: Record<Idioma, Textos> = {
@@ -209,7 +209,6 @@ export const textos: Record<Idioma, Textos> = {
       etiqueta: 'Créditos',
       titulo: 'Un juego de Emi',
       detalle: 'Idea, historia, personajes y dirección de arte.',
-      hecho: 'Hecho con Construct 2',
       capitulo: 'Capítulo 1 · 2026',
     },
   },
@@ -361,7 +360,6 @@ export const textos: Record<Idioma, Textos> = {
       etiqueta: 'Credits',
       titulo: 'A game by Emi',
       detalle: 'Concept, story, characters and art direction.',
-      hecho: 'Made with Construct 2',
       capitulo: 'Chapter 1 · 2026',
     },
   },

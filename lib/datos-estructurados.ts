@@ -30,8 +30,8 @@ export function datosEstudio(lang: Idioma, descripcion: string) {
 }
 
 const textosJuego = {
-  es: { generos: ['Plataformas', 'Terror'], plataforma: 'Navegador web (PC con teclado)' },
-  en: { generos: ['Platformer', 'Horror'], plataforma: 'Web browser (PC with keyboard)' },
+  es: { generos: ['Plataformas', 'Terror'], plataforma: 'Navegador web (compu con teclado o celular)' },
+  en: { generos: ['Platformer', 'Horror'], plataforma: 'Web browser (computer with keyboard, or phone)' },
 };
 
 // Página de la mansión: el videojuego.
@@ -49,7 +49,7 @@ export function datosMansion(lang: Idioma, descripcion: string) {
     genre: t.generos,
     gamePlatform: t.plataforma,
     applicationCategory: 'GameApplication',
-    operatingSystem: 'Windows, macOS, Linux',
+    operatingSystem: 'Windows, macOS, Linux, Android, iOS',
     playMode: 'SinglePlayer',
     numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
     // El juego en sí está en español (los textos de la página están en los dos idiomas).

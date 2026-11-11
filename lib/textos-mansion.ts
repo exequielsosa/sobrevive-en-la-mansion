@@ -43,6 +43,7 @@ export type Textos = {
     teclas: { teclas: string[]; accion: string }[];
     consejosAria: string;
     consejos: string[];
+    tactil: string;
   };
   jugar: {
     etiqueta: string;
@@ -51,7 +52,23 @@ export type Textos = {
     iframeTitulo: string;
     pantallaCompleta: string;
     notas: string[];
-    celular: string;
+    // En celulares y tablets: el juego se abre en pantalla completa, con botones a los costados.
+    tactil: {
+      boton: string;
+      notas: string[];
+      girarTitulo: string;
+      girarTexto: string;
+      girarDetalle: string;
+      izquierda: string;
+      derecha: string;
+      saltar: string;
+      cruz: string;
+      gomera: string;
+      pausa: string;
+      seguir: string;
+      menu: string;
+      salir: string;
+    };
   };
   creditos: { etiqueta: string; titulo: string; detalle: string; capitulo: string };
 };
@@ -80,7 +97,7 @@ export const textos: Record<Idioma, Textos> = {
       bajada: 'Te despertaste en una mansión que no conocés. Tres pisos. Tres llaves. Una sola salida.',
       jugar: 'Jugar ahora',
       personajes: 'Conocé a los personajes',
-      datos: 'Plataformas 2D · Terror · Un jugador · PC con teclado',
+      datos: 'Plataformas 2D · Terror · Un jugador · Compu o celular',
     },
     historia: {
       etiqueta: 'La historia',
@@ -191,6 +208,7 @@ export const textos: Record<Idioma, Textos> = {
         'Algunos enemigos dejan corazones. Agarralos.',
         'Con las tres llaves se abre la puerta grande.',
       ],
+      tactil: 'En el celular se juega acostado, con botones a los costados: flechas, saltar, cruz, gomera y pausa.',
     },
     jugar: {
       etiqueta: 'Jugar',
@@ -198,8 +216,23 @@ export const textos: Record<Idioma, Textos> = {
       boton: 'Hacé clic para jugar',
       iframeTitulo: 'Sobrevive en la mansión: el juego',
       pantallaCompleta: 'Pantalla completa',
-      notas: ['Se juega en computadora, con teclado', 'Usá auriculares', 'Esc para pausar'],
-      celular: 'Este juego necesita teclado. Abrilo en una computadora.',
+      notas: ['En la compu, con teclado', 'Usá auriculares', 'Esc para pausar'],
+      tactil: {
+        boton: 'Tocá para jugar',
+        notas: ['Con el celular acostado', 'Usá auriculares', 'Los botones aparecen a los costados'],
+        girarTitulo: 'Girá el celular',
+        girarTexto: 'Sobrevive en la mansión se juega con el celular acostado.',
+        girarDetalle: 'Cuando lo gires, seguís jugando.',
+        izquierda: 'Caminar a la izquierda',
+        derecha: 'Caminar a la derecha',
+        saltar: 'Saltar',
+        cruz: 'Cruz',
+        gomera: 'Gomera',
+        pausa: 'Pausa',
+        seguir: 'Seguir',
+        menu: 'Menú',
+        salir: 'Salir del juego',
+      },
     },
     creditos: {
       etiqueta: 'Créditos',
@@ -232,7 +265,7 @@ export const textos: Record<Idioma, Textos> = {
       bajada: 'You wake up in a mansion you have never seen. Three floors. Three keys. One way out.',
       jugar: 'Play now',
       personajes: 'Meet the characters',
-      datos: '2D platformer · Horror · Single player · PC with keyboard',
+      datos: '2D platformer · Horror · Single player · Computer or phone',
     },
     historia: {
       etiqueta: 'The story',
@@ -343,6 +376,7 @@ export const textos: Record<Idioma, Textos> = {
         'Some enemies drop hearts. Grab them.',
         'Three keys open the great door.',
       ],
+      tactil: 'On a phone, play it sideways with buttons on both sides: arrows, jump, cross, slingshot and pause.',
     },
     jugar: {
       etiqueta: 'Play',
@@ -350,8 +384,23 @@ export const textos: Record<Idioma, Textos> = {
       boton: 'Click to play',
       iframeTitulo: 'Survive the Mansion: the game',
       pantallaCompleta: 'Full screen',
-      notas: ['Play on a computer with a keyboard', 'Headphones recommended', 'Esc to pause', 'In-game text is in Spanish'],
-      celular: 'This game needs a keyboard. Open it on a computer.',
+      notas: ['On a computer, with the keyboard', 'Headphones recommended', 'Esc to pause', 'In-game text is in Spanish'],
+      tactil: {
+        boton: 'Tap to play',
+        notas: ['Hold your phone sideways', 'Headphones recommended', 'Buttons appear on both sides', 'In-game text is in Spanish'],
+        girarTitulo: 'Turn your phone',
+        girarTexto: 'Survive the Mansion is played with the phone sideways.',
+        girarDetalle: 'Turn it and keep playing.',
+        izquierda: 'Walk left',
+        derecha: 'Walk right',
+        saltar: 'Jump',
+        cruz: 'Cross',
+        gomera: 'Slingshot',
+        pausa: 'Pause',
+        seguir: 'Resume',
+        menu: 'Menu',
+        salir: 'Exit the game',
+      },
     },
     creditos: {
       etiqueta: 'Credits',

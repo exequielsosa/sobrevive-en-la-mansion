@@ -27,6 +27,7 @@ export default function ComoSeJuega({ t }: { t: Textos }) {
               </div>
             ))}
           </dl>
+          <p className="teclas__tactil">{c.tactil}</p>
         </div>
         <ul aria-label={c.consejosAria} className="consejos">
           {c.consejos.map((texto, i) => (

@@ -85,7 +85,6 @@ a:hover { color: var(--vela-clara); }
 @media (max-width: 760px) {
   .nav__dentro { flex-wrap: nowrap; padding: 10px 16px; }
   .nav__logo img { height: 36px; width: auto; }
-  .nav__jugar { display: none; }
   .nav__menu { display: inline-flex; }
   .nav__acciones { gap: 10px; }
   .nav__links { display: none; }
@@ -175,6 +174,7 @@ a:hover { color: var(--vela-clara); }
   font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--texto);
 }
 .tecla--ancha { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+.teclas__tactil { margin: 0; font-size: 15px; color: var(--gris); }
 .consejos { flex: 1 1 380px; min-width: 0; align-self: flex-end; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
 .consejos li { display: flex; gap: 18px; align-items: center; padding: 22px; border: 1px solid var(--linea); border-radius: 6px; background: var(--fondo-2); color: var(--texto-2); }
 .consejos img { flex: 0 0 auto; width: 38px; height: auto; }
@@ -185,7 +185,6 @@ a:hover { color: var(--vela-clara); }
 .jugar__fondo { object-fit: cover; opacity: 0.35; filter: blur(2px); }
 .jugar__portada { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 24px; }
 .jugar__logo { width: min(420px, 70%); height: auto; }
-.jugar__aviso { margin: 0; padding: 14px 18px; border: 1px dashed var(--linea-fuerte); border-radius: 4px; background: rgba(13, 12, 11, 0.8); color: var(--texto-2); max-width: 420px; }
 .jugar__juego { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 .jugar__notas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 28px; font-size: 14px; color: var(--gris); }
 
@@ -216,4 +215,63 @@ a:hover { color: var(--vela-clara); }
   .teclas__fila dt { flex-basis: 110px; }
   .camino__paso { padding: 16px; gap: 14px; }
   .camino__numero { flex-basis: 40px; font-size: 36px; }
+}
+
+/* ---------- el juego en el celular (JuegoTactil) ----------
+   Toda la pantalla: el juego en el medio y los botones en las franjas negras de los costados. */
+@font-face { font-family: 'Creepster'; src: url('/fuentes/creepster.ttf') format('truetype'); font-display: swap; }
+html.con-juego, html.con-juego body { overflow: hidden; overscroll-behavior: none; }
+.tactil {
+  --columna: clamp(112px, 15vw, 172px);
+  --boton: calc(var(--columna) / 2 - 9px);
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; grid-template-columns: var(--columna) minmax(0, 1fr) var(--columna);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: #000; color: #fff;
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+}
+.tactil__columna { min-height: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 14px 0 22px; }
+.tactil__arriba { min-height: 44px; }
+.tactil__fila { display: flex; gap: 8px; }
+.tactil__acciones { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tactil--quieto .tactil__mando { visibility: hidden; }
+.tactil__boton {
+  width: var(--boton); height: var(--boton); padding: 0; flex: 0 0 auto;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 50%; background: rgba(255, 255, 255, 0.12); color: #fff;
+  touch-action: none; cursor: pointer;
+}
+.tactil__boton svg { width: 52%; height: 52%; }
+.tactil__boton img { width: 58%; height: auto; pointer-events: none; }
+.tactil__boton--apretado { background: rgba(255, 255, 255, 0.34); border-color: #fff; transform: scale(0.94); }
+.tactil__boton--chico { width: 44px; height: 44px; }
+.tactil__boton--chico svg { width: 20px; height: 20px; }
+.tactil__boton--grande { width: calc(var(--boton) * 1.36); height: calc(var(--boton) * 1.36); font: 700 10px/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; }
+.tactil__boton--grande svg { width: 44%; height: 44%; }
+.tactil__centro { min-width: 0; display: flex; align-items: center; justify-content: center; }
+.tactil__pantalla {
+  position: relative; container-type: inline-size; aspect-ratio: 854 / 480;
+  width: min(100%, calc((100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px) * 854 / 480));
+  width: min(100%, calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px) * 854 / 480));
+}
+.tactil__juego { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+/* SEGUIR y MENÚ: van donde en la compu dice "ESC: seguir  M: menú" (medidas del juego: 854 × 480). */
+.tactil__pausa { position: absolute; left: 0; right: 0; top: 52%; display: flex; justify-content: center; gap: 4.2cqi; }
+.tactil__piedra {
+  width: 28.8cqi; aspect-ratio: 411 / 118; padding: 0; border: 0; cursor: pointer;
+  background: url('/img/boton.png') center / 100% 100% no-repeat;
+  font-family: 'Creepster', Impact, sans-serif; font-size: 4cqi; letter-spacing: 0.06em; text-transform: uppercase; color: #f2f1ee;
+}
+.tactil__piedra:active { background-image: url('/img/boton_presionado.png'); }
+.tactil__girar {
+  position: fixed; inset: 0; z-index: 1; display: none;
+  flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 32px; text-align: center;
+  background: var(--fondo); color: var(--texto);
+}
+.tactil__girar svg { color: var(--vela); }
+.tactil__girar h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1.1; }
+.tactil__girar p { margin: 0; max-width: 290px; font-size: 17px; line-height: 1.55; color: var(--texto-2); }
+.tactil__girar .tactil__girar-detalle { font-size: 14px; color: var(--gris); }
+@media (orientation: portrait) {
+  .tactil__girar { display: flex; }
 }

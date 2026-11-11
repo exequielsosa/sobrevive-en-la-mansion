@@ -32,7 +32,7 @@ link corto para compartir el juego.
 | `app/sitemap.ts`, `app/robots.ts` | Arman `/sitemap.xml` (la lista de páginas para Google) y `/robots.txt`. **Cuando haya un juego nuevo, se agrega su ruta en `sitemap.ts`.** |
 | `lib/datos-estructurados.ts` | La "ficha invisible" para Google de cada página (qué es el estudio, qué es el juego). |
 | `components/estudio/` | Las piezas de la portada: `Barra`, `Destacado`, `Juegos`, `SobreEstudio`, `Pie` y `Marca` (el nombre "EMI STUDIO"). |
-| `components/mansion/` | Las piezas de la página del juego: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `Creditos`. |
+| `components/mansion/` | Las piezas de la página del juego: `Nav`, `Portada`, `Historia`, `Personajes`, `Jefes`, `ComoSeJuega`, `Jugar`, `JuegoTactil` (el juego en el celular), `Creditos`. |
 | `app/[lang]/` | El layout (idioma y fuentes), la portada (`page.tsx`) y la página del juego (`mansion/page.tsx`). Cada página pone su título y su vista previa para redes. |
 | `app/globals.css` | El estilo de la mansión ("Vela") y las piezas comunes, como los botones. |
 | `app/estudio.css` | El estilo de la portada del estudio ("Sala"): oscuro y neutro, cada juego trae su color. |
@@ -43,8 +43,9 @@ link corto para compartir el juego.
 
 ## Cómo actualizar el juego
 
-1. En Construct 2: **File → Export project → HTML5 website**, con la plantilla **Embed style**.
-   (Si aparece el aviso del "minifier" de Java, se puede aceptar: el juego funciona igual.)
+1. En Construct 2: **File → Export project → HTML5 website**, con la plantilla **Embed style**
+   y **sin tildar "Minify script"**: el modo celular lee en qué pantalla está el juego y si está en
+   pausa, y con el script minificado no puede (igual anda, pero los botones se ven siempre).
 2. Borrar el contenido de `public/juego/` y copiar ahí todo lo que exportó Construct.
 3. Correr `npm run preparar-juego`. Arregla el nombre de la fuente (Construct la exporta en
    minúsculas y en el servidor no la encuentra), pone el nombre del juego en la pestaña y cambia
@@ -53,3 +54,22 @@ link corto para compartir el juego.
 
 El juego se carga recién cuando alguien toca **"Hacé clic para jugar"**: así la página abre rápido
 y el navegador deja que suene el audio.
+
+## El juego en el celular
+
+En celulares y tablets (pantalla táctil, sin mouse) el botón dice **"Tocá para jugar"** y el juego
+se abre en pantalla completa (`components/mansion/JuegoTactil.tsx`):
+
+- El juego va en el medio y los botones en las franjas de los costados, para que no tapen nada.
+- Cada botón le "aprieta una tecla" al juego, la misma que en la compu (◀ A, ▶ D, saltar Espacio,
+  cruz J, gomera K, pausa Esc; en la pausa, SEGUIR Esc y MENÚ M). El juego no necesita reglas nuevas.
+- El juego se abre con `?tactil=1`. Desde la versión 21 el juego lo lee (objeto Browser) y cambia
+  los textos que hablan de teclas: la pantalla Controles nombra los botones y no aparece "ESC: pausa".
+- La página le pregunta al juego en qué pantalla está (`cr_getC2Runtime`): los botones de jugar
+  solo aparecen en los pisos, y en la pausa aparecen SEGUIR y MENÚ con la piedra de los botones del juego.
+- Construct 2 cancela los toques sobre el juego, así que la página convierte cada toque en un clic
+  de mouse: así andan los botones del menú (JUGAR, CONTROLES, VOLVER...).
+- Si el celular está parado aparece "Girá el celular"; si se gira o se cambia de app mientras se
+  juega, el juego se pausa solo. El botón "atrás" del celular cierra el juego.
+- Los botones redondos son de prueba. Para cambiarlos por dibujos de Emi: PNG de 192 × 192 con
+  fondo transparente, en `public/img/`, y se reemplazan los íconos en `JuegoTactil.tsx`.

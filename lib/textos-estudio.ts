@@ -57,7 +57,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       bajada: 'Te despertaste en una mansión que no conocés. Tres pisos. Tres llaves. Una sola salida.',
       jugar: 'Jugar gratis',
       ver: 'Ver el juego',
-      datos: 'Plataformas 2D · Terror · En el navegador · PC con teclado',
+      datos: 'Plataformas 2D · Terror · En el navegador · Compu o celular',
     },
     juegos: {
       titulo: 'Juegos',
@@ -114,7 +114,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       bajada: 'You wake up in a mansion you have never seen. Three floors. Three keys. One way out.',
       jugar: 'Play for free',
       ver: 'See the game',
-      datos: '2D platformer · Horror · In your browser · PC with keyboard',
+      datos: '2D platformer · Horror · In your browser · Computer or phone',
     },
     juegos: {
       titulo: 'Games',

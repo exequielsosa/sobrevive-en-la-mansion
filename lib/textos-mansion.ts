@@ -178,7 +178,7 @@ export const textos: Record<Idioma, Textos> = {
           nombre: 'El Stalker',
           texto: 'Te sigue a todas partes. Echa el brazo atrás y lanza un golpe que llega lejísimos. Después del golpe queda agotado: ese es tu momento.',
           datos: '50',
-          ataque: 'Puñetazo: 1,5 corazones',
+          ataque: 'Puñetazo: 1 corazón',
           alt: 'El Stalker estira sus brazos larguísimos hacia Jonathan',
         },
         psicopata: {
@@ -346,7 +346,7 @@ export const textos: Record<Idioma, Textos> = {
           nombre: 'The Stalker',
           texto: 'It follows you everywhere. It pulls its arm back and throws a punch with terrifying reach. After the blow it is exhausted: that is your chance.',
           datos: '50',
-          ataque: 'Punch: 1.5 hearts',
+          ataque: 'Punch: 1 heart',
           alt: 'The Stalker reaches for Jonathan with its endless arms',
         },
         psicopata: {

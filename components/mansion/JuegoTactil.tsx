@@ -10,7 +10,8 @@
 //
 // Para saber en qué pantalla está el juego (y si está en pausa) la página le pregunta al motor de
 // Construct 2 (cr_getC2Runtime). Los botones de caminar, saltar y pegar solo aparecen en los pisos;
-// en la pausa aparecen SEGUIR y MENÚ encima del juego.
+// en la pausa aparecen SEGUIR y MENÚ encima del juego. Mientras se ve una historieta (desde la
+// versión 22: variable escena > 0) no hay botones: se pasa de viñeta tocando el juego.
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { PointerEvent as EventoPuntero } from 'react';
@@ -35,20 +36,22 @@ type Motor = { running_layout?: { name?: unknown } | null; all_global_vars?: { n
 // "cargando": el juego todavía no arrancó. "leido": sabemos la pantalla y la pausa.
 // "desconocido": el motor existe pero no se puede leer (por ejemplo, si se exportó minificado):
 // entonces los botones se muestran siempre y la pausa la lleva la página.
-type Estado = { modo: 'cargando' | 'leido' | 'desconocido'; enPiso: boolean; pausa: boolean };
+type Estado = { modo: 'cargando' | 'leido' | 'desconocido'; enPiso: boolean; pausa: boolean; historieta: boolean };
 
 function leerJuego(w: VentanaJuego | null | undefined): Estado {
   try {
     const motor = w?.cr_getC2Runtime?.() as Motor | undefined;
-    if (!motor) return { modo: 'cargando', enPiso: false, pausa: false };
-    if (!('running_layout' in motor)) return { modo: 'desconocido', enPiso: true, pausa: false };
+    if (!motor) return { modo: 'cargando', enPiso: false, pausa: false, historieta: false };
+    if (!('running_layout' in motor)) return { modo: 'desconocido', enPiso: true, pausa: false, historieta: false };
     const pantalla = motor.running_layout?.name;
-    if (typeof pantalla !== 'string') return { modo: 'cargando', enPiso: false, pausa: false };
+    if (typeof pantalla !== 'string') return { modo: 'cargando', enPiso: false, pausa: false, historieta: false };
     const enPiso = pantalla.startsWith('Piso');
-    const pausa = enPiso && motor.all_global_vars?.find((v) => v.name === 'pausa')?.data === 1;
-    return { modo: 'leido', enPiso, pausa: !!pausa };
+    const variable = (nombre: string) => motor.all_global_vars?.find((v) => v.name === nombre)?.data;
+    const pausa = enPiso && variable('pausa') === 1;
+    const historieta = enPiso && Number(variable('escena')) > 0;
+    return { modo: 'leido', enPiso, pausa, historieta };
   } catch {
-    return { modo: 'cargando', enPiso: false, pausa: false };
+    return { modo: 'cargando', enPiso: false, pausa: false, historieta: false };
   }
 }
 
@@ -75,7 +78,7 @@ export function cerrarPantallaCompleta() {
 export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSalir: () => void }) {
   const b = t.tactil;
   const juego = useRef<HTMLIFrameElement>(null);
-  const [estado, setEstado] = useState<Estado>({ modo: 'cargando', enPiso: false, pausa: false });
+  const [estado, setEstado] = useState<Estado>({ modo: 'cargando', enPiso: false, pausa: false, historieta: false });
   const estadoActual = useRef(estado);
   const pausaPropia = useRef(false); // solo se usa en el modo "desconocido"
   const dedos = useRef(new Map<number, Tecla | null>()); // cada dedo apoyado y el botón que tiene abajo
@@ -124,7 +127,7 @@ export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSali
       const leido = leerJuego(juego.current?.contentWindow as VentanaJuego | null);
       const nuevo = leido.modo === 'desconocido' ? { ...leido, pausa: pausaPropia.current } : leido;
       const viejo = estadoActual.current;
-      if (viejo.modo !== nuevo.modo || viejo.enPiso !== nuevo.enPiso || viejo.pausa !== nuevo.pausa) {
+      if (viejo.modo !== nuevo.modo || viejo.enPiso !== nuevo.enPiso || viejo.pausa !== nuevo.pausa || viejo.historieta !== nuevo.historieta) {
         estadoActual.current = nuevo;
         setEstado(nuevo);
       }
@@ -132,15 +135,15 @@ export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSali
     return () => window.clearInterval(id);
   }, []);
 
-  const conBotones = estado.enPiso && !estado.pausa;
-  // Si los botones se esconden (pausa, menú, muerte), se sueltan todas las teclas.
+  const conBotones = estado.enPiso && !estado.pausa && !estado.historieta;
+  // Si los botones se esconden (pausa, historieta, menú, muerte), se sueltan todas las teclas.
   useEffect(() => {
     if (!conBotones) soltarTodo();
   }, [conBotones, soltarTodo]);
 
   const pausar = useCallback(() => {
     const e = estadoActual.current;
-    if (!e.enPiso || e.pausa) return;
+    if (!e.enPiso || e.pausa || e.historieta) return;
     soltarTodo();
     pausaPropia.current = true;
     tocar('pausa');

@@ -10267,7 +10267,7 @@ window["cr_setSuspended"] = function(s)
 			this.is_else_block = (this.conditions[0].type == null && this.conditions[0].func == cr.system_object.prototype.cnds.Else);
 		}
 	};
-	window["_c2hh_"] = "";
+	window["_c2hh_"] = "1A4EBFF4E34A774A3F25B8D53623C3E3FA02EDD2";
 	EventBlock.prototype.postInit = function (hasElse/*, prevBlock_*/)
 	{
 		var i, len;
@@ -18657,8 +18657,8 @@ cr.plugins_.Browser = function(runtime)
 			Windows["System"]["Launcher"]["launchUriAsync"](new Windows["Foundation"]["Uri"](url));
 		else if (navigator["app"] && navigator["app"]["loadUrl"])
 			navigator["app"]["loadUrl"](url, { "openExternal": true });
-		else if (self["cordova"] && self["cordova"]["InAppBrowser"])
-			self["cordova"]["InAppBrowser"]["open"](url, "_system");
+		else if (this.runtime.isCordova)
+			window.open(url, "_system");
 		else if (!this.is_arcade && !this.runtime.isDomFree)
 		{
 			if (target === 2 && !this.is_arcade)		// top
@@ -18679,8 +18679,8 @@ cr.plugins_.Browser = function(runtime)
 			Windows["System"]["Launcher"]["launchUriAsync"](new Windows["Foundation"]["Uri"](url));
 		else if (navigator["app"] && navigator["app"]["loadUrl"])
 			navigator["app"]["loadUrl"](url, { "openExternal": true });
-		else if (self["cordova"] && self["cordova"]["InAppBrowser"])
-			self["cordova"]["InAppBrowser"]["open"](url, "_system");
+		else if (this.runtime.isCordova)
+			window.open(url, "_system");
 		else if (!this.is_arcade && !this.runtime.isDomFree)
 			window.open(url, tag);
 	};
@@ -23661,8 +23661,8 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Browser,
 	cr.plugins_.Keyboard,
 	cr.plugins_.Mouse,
-	cr.plugins_.Sprite,
 	cr.plugins_.TiledBg,
+	cr.plugins_.Sprite,
 	cr.plugins_.Text,
 	cr.behaviors.solid,
 	cr.behaviors.Platform,
@@ -23752,5 +23752,13 @@ cr.getObjectRefTable = function () { return [
 	cr.system_object.prototype.acts.AddVar,
 	cr.plugins_.Sprite.prototype.exps.Count,
 	cr.system_object.prototype.acts.SetTimescale,
-	cr.plugins_.Audio.prototype.acts.SetSilent
+	cr.plugins_.Audio.prototype.acts.SetSilent,
+	cr.system_object.prototype.exps.find,
+	cr.system_object.prototype.exps.tokenat,
+	cr.system_object.prototype.exps.wallclocktime,
+	cr.system_object.prototype.exps.left,
+	cr.plugins_.Text.prototype.acts.SetOpacity,
+	cr.plugins_.Text.prototype.acts.SetY,
+	cr.system_object.prototype.exps["float"],
+	cr.plugins_.Audio.prototype.acts.SetVolume
 ];};

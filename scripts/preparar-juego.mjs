@@ -6,6 +6,7 @@
 //     pero creepster.css la pide con mayúsculas. En el servidor (Linux) eso no la encuentra.
 //  2. Pone el nombre del juego en el título de la pestaña y en el manifiesto.
 //  3. Reemplaza los íconos y el logo de carga de Construct por la cruz del juego.
+//  4. Copia la licencia de la fuente Creepster (SIL OFL), que tiene que acompañar a la fuente.
 
 import { readFileSync, writeFileSync, readdirSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -37,3 +38,7 @@ for (const f of readdirSync(ICONOS)) {
   copyFileSync(join(ICONOS, f), join(JUEGO, f));
 }
 console.log('Íconos reemplazados por la cruz.');
+
+// 4. Licencia de la fuente
+copyFileSync(join(process.cwd(), 'public', 'fuentes', 'LICENCIA_OFL.txt'), join(JUEGO, 'LICENCIA_OFL.txt'));
+console.log('Licencia de Creepster copiada.');

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idiomas';
 import type { Textos } from '@/lib/textos-mansion';
+import { LOGO_ESTUDIO, LOGO_JUEGO, conAncho } from '@/lib/logos';
 
 export default function Creditos({ t, lang }: { t: Textos; lang: Idioma }) {
   const c = t.creditos;
@@ -11,10 +12,11 @@ export default function Creditos({ t, lang }: { t: Textos; lang: Idioma }) {
         <div className="creditos__arriba">
           <div>
             <h2 id="t-creditos" className="etiqueta">{c.etiqueta}</h2>
-            <p className="creditos__titulo">{c.titulo}</p>
+            {/* El logo de Emi Studio en lugar del título; el texto alternativo dice el título ("Un juego de Emi"). */}
+            <Image src={LOGO_ESTUDIO.horizontal.src} alt={c.titulo} {...conAncho(LOGO_ESTUDIO.horizontal, 240)} sizes="240px" className="creditos__marca" />
             <p className="gris-claro">{c.detalle}</p>
           </div>
-          <Image src="/img/logo.png" alt={t.portada.logoAlt} width={260} height={132} className="creditos__logo" />
+          <Image src={LOGO_JUEGO[lang].src} alt={t.portada.logoAlt} {...conAncho(LOGO_JUEGO[lang], 260)} className="creditos__logo" />
         </div>
         <div className="creditos__abajo">
           <span>{c.capitulo}</span>

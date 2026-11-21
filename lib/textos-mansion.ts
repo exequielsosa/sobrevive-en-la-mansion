@@ -20,7 +20,7 @@ export type Textos = {
     caminoAria: string;
     pisos: { numero: string; nombre: string; detalle: string; llaveAlt: string }[];
     puerta: { nombre: string; detalle: string; alt: string };
-    capturas: { alt: string; pie: string }[];
+    capturas: { imagen: string; alt: string; pie: string }[];
   };
   personajes: {
     etiqueta: string;
@@ -114,9 +114,9 @@ export const textos: Record<Idioma, Textos> = {
       ],
       puerta: { nombre: 'La puerta grande', detalle: 'Tres candados. Tres llaves. La salida.', alt: 'La puerta grande con tres candados' },
       capturas: [
-        { alt: 'Captura del piso 3: Jonathan en el pasillo y una Cabeza', pie: 'Piso 3 · El comienzo' },
-        { alt: 'Captura del piso 2: una Cabeza, una Barrada y un 444', pie: 'Piso 2 · Más miedos' },
-        { alt: 'Captura del piso 1: Jonathan con la linterna frente a una manada de 444', pie: 'Piso 1 · A oscuras' },
+        { imagen: '/img/captura_piso3.jpg', alt: 'Captura del piso 3: Jonathan en el pasillo y una Cabeza', pie: 'Piso 3 · El comienzo' },
+        { imagen: '/img/captura_piso2.jpg', alt: 'Captura del piso 2: una Cabeza, una Barrada y un 444', pie: 'Piso 2 · Más miedos' },
+        { imagen: '/img/captura_piso1.jpg', alt: 'Captura del piso 1: Jonathan con la linterna frente a una manada de 444', pie: 'Piso 1 · A oscuras' },
       ],
     },
     personajes: {
@@ -260,7 +260,7 @@ export const textos: Record<Idioma, Textos> = {
     },
     portada: {
       aria: 'Home',
-      logoAlt: 'Sobrevive en la mansión (Survive the Mansion) — Chapter 1',
+      logoAlt: 'Survive the Mansion — Chapter 1',
       fondoAlt: 'Jonathan raises the cross in front of the open door of the mansion',
       bajada: 'You wake up in a mansion you have never seen. Three floors. Three keys. One way out.',
       jugar: 'Play now',
@@ -282,9 +282,9 @@ export const textos: Record<Idioma, Textos> = {
       ],
       puerta: { nombre: 'The great door', detalle: 'Three locks. Three keys. The way out.', alt: 'The great door with three padlocks' },
       capturas: [
-        { alt: 'Floor 3 screenshot: Jonathan in the hallway and a Head', pie: 'Floor 3 · The beginning' },
-        { alt: 'Floor 2 screenshot: a Head, a Barrada and a 444', pie: 'Floor 2 · More fears' },
-        { alt: 'Floor 1 screenshot: Jonathan with his flashlight facing a pack of 444s', pie: 'Floor 1 · In the dark' },
+        { imagen: '/img/captura_piso3_en.jpg', alt: 'Floor 3 screenshot: Jonathan in the hallway and a Head', pie: 'Floor 3 · The beginning' },
+        { imagen: '/img/captura_piso2_en.jpg', alt: 'Floor 2 screenshot: a Head, a Barrada and a 444', pie: 'Floor 2 · More fears' },
+        { imagen: '/img/captura_piso1_en.jpg', alt: 'Floor 1 screenshot: Jonathan with his flashlight facing a pack of 444s', pie: 'Floor 1 · In the dark' },
       ],
     },
     personajes: {
@@ -384,10 +384,10 @@ export const textos: Record<Idioma, Textos> = {
       boton: 'Click to play',
       iframeTitulo: 'Survive the Mansion: the game',
       pantallaCompleta: 'Full screen',
-      notas: ['On a computer, with the keyboard', 'Headphones recommended', 'Esc to pause', 'In-game text is in Spanish'],
+      notas: ['On a computer, with the keyboard', 'Headphones recommended', 'Esc to pause'],
       tactil: {
         boton: 'Tap to play',
-        notas: ['Hold your phone sideways', 'Headphones recommended', 'Buttons appear on both sides', 'In-game text is in Spanish'],
+        notas: ['Hold your phone sideways', 'Headphones recommended', 'Buttons appear on both sides'],
         girarTitulo: 'Turn your phone',
         girarTexto: 'Survive the Mansion is played with the phone sideways.',
         girarDetalle: 'Turn it and keep playing.',

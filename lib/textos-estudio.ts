@@ -34,7 +34,7 @@ export type TextosEstudio = {
     };
     capturasAria: string;
     capturas: Captura[];
-    capitulo2: { estado: string; nombre: string; capitulo: string; imagenAlt: string };
+    capitulo2: { estado: string; nombre: string; capitulo: string; imagen: string; imagenAlt: string };
   };
   estudio: { etiqueta: string; titulo: string; parrafos: string[]; imagenAlt: string; pie: string };
   pie: { derechos: string; otroIdioma: string };
@@ -83,6 +83,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
         estado: 'En desarrollo',
         nombre: 'Sobrevive en la mansión',
         capitulo: 'Capítulo 2 · Próximamente',
+        imagen: '/img/capitulo2.jpg',
         imagenAlt: 'Arte del Capítulo 2: Jonathan escapa corriendo de la mansión, perseguido por la Sombra, el Psicópata y otros monstruos',
       },
     },
@@ -102,14 +103,14 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
     meta: {
       titulo: 'Emi Studio — Games you play in your browser',
       descripcion:
-        'Emi Studio is an independent video game studio. Its first game, Sobrevive en la mansión (Survive the Mansion), is free to play in your browser.',
+        'Emi Studio is an independent video game studio. Its first game, Survive the Mansion, is free to play in your browser.',
     },
     encabezado: 'Emi Studio: independent video game studio',
     barra: { aria: 'Main', inicio: 'Emi Studio, home', juegos: 'Games', estudio: 'Studio', idioma: 'Language' },
     destacado: {
       aria: 'Featured game',
       etiqueta: 'New game · Play it now',
-      logoAlt: 'Sobrevive en la mansión (Survive the Mansion) — Chapter 1',
+      logoAlt: 'Survive the Mansion — Chapter 1',
       fondoAlt: 'Jonathan raises the cross in front of the open door of the mansion',
       bajada: 'You wake up in a mansion you have never seen. Three floors. Three keys. One way out.',
       jugar: 'Play for free',
@@ -122,24 +123,25 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
       mansion: {
         disponible: 'Available',
         generos: ['2D platformer', 'Horror'],
-        nombre: 'Sobrevive en la mansión',
-        capitulo: 'Survive the Mansion · Chapter 1 · 2026',
+        nombre: 'Survive the Mansion',
+        capitulo: 'Chapter 1 · 2026',
         texto:
           'Jonathan wakes up in a mansion he has never seen. He has to find a key on every floor, survive the monsters and defeat three bosses to open the way out.',
         imagenAlt: 'The Stalker reaches out its very long arms toward Jonathan',
         jugar: 'Play',
         ver: 'See the page',
       },
-      capturasAria: 'Screenshots of Sobrevive en la mansión',
+      capturasAria: 'Screenshots of Survive the Mansion',
       capturas: [
-        { imagen: '/img/captura_piso3.jpg', alt: 'Floor 3 screenshot: Jonathan in the hallway and a Head', pie: 'Floor 3 · The beginning' },
-        { imagen: '/img/captura_piso2.jpg', alt: 'Floor 2 screenshot: a Head, a Barrada and a 444', pie: 'Floor 2 · More fears' },
-        { imagen: '/img/captura_piso1.jpg', alt: 'Floor 1 screenshot: Jonathan with his flashlight facing a pack of 444s', pie: 'Floor 1 · In the dark' },
+        { imagen: '/img/captura_piso3_en.jpg', alt: 'Floor 3 screenshot: Jonathan in the hallway and a Head', pie: 'Floor 3 · The beginning' },
+        { imagen: '/img/captura_piso2_en.jpg', alt: 'Floor 2 screenshot: a Head, a Barrada and a 444', pie: 'Floor 2 · More fears' },
+        { imagen: '/img/captura_piso1_en.jpg', alt: 'Floor 1 screenshot: Jonathan with his flashlight facing a pack of 444s', pie: 'Floor 1 · In the dark' },
       ],
       capitulo2: {
         estado: 'In development',
-        nombre: 'Sobrevive en la mansión',
-        capitulo: 'Survive the Mansion · Chapter 2 · Coming soon',
+        nombre: 'Survive the Mansion',
+        capitulo: 'Chapter 2 · Coming soon',
+        imagen: '/img/capitulo2_en.jpg',
         imagenAlt: 'Chapter 2 art: Jonathan runs away from the mansion, chased by the Shadow, the Psycho and other monsters',
       },
     },
@@ -150,7 +152,7 @@ export const textosEstudio: Record<Idioma, TextosEstudio> = {
         'Emi Studio is an independent video game studio founded by Emi, creative and art director. He writes the stories, designs the characters and directs the art of every game.',
       ],
       imagenAlt: 'The Psycho, with a pumpkin face, a chainsaw and a knife, looming over Jonathan',
-      pie: 'The Psycho, final boss of Sobrevive en la mansión.',
+      pie: 'The Psycho, final boss of Survive the Mansion.',
     },
     pie: { derechos: '© 2026 Emi Studio', otroIdioma: 'Español' },
   },

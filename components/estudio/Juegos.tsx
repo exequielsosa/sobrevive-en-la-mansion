@@ -61,7 +61,7 @@ export default function Juegos({ t, lang }: { t: TextosEstudio; lang: Idioma }) 
 
         <article aria-labelledby="t-capitulo2" className="ficha ficha--proxima">
           <div className="ficha__imagen">
-            <Image src="/img/capitulo2.jpg" alt={c2.imagenAlt} fill sizes="(max-width: 860px) 100vw, 760px" className="ficha__foto" />
+            <Image src={c2.imagen} alt={c2.imagenAlt} fill sizes="(max-width: 860px) 100vw, 760px" className="ficha__foto" />
           </div>
           <div className="ficha__texto ficha__texto--centro">
             <ul className="ficha__chips">

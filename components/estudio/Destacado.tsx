@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idiomas';
 import type { TextosEstudio } from '@/lib/textos-estudio';
+import { LOGO_JUEGO } from '@/lib/logos';
 import { IconoPlay } from '../Iconos';
 
 export default function Destacado({ t, lang }: { t: TextosEstudio; lang: Idioma }) {
   const d = t.destacado;
+  const logo = LOGO_JUEGO[lang];
   return (
     <section id="inicio" aria-label={d.aria} className="destacado">
       <Image src="/img/hero_puerta.jpg" alt={d.fondoAlt} fill priority sizes="100vw" className="destacado__fondo" />
@@ -15,7 +17,7 @@ export default function Destacado({ t, lang }: { t: TextosEstudio; lang: Idioma 
       <div className="contenedor destacado__contenido">
         <div className="destacado__texto">
           <p className="destacado__etiqueta">{d.etiqueta}</p>
-          <Image src="/img/logo.png" alt={d.logoAlt} width={705} height={358} priority className="destacado__logo" />
+          <Image src={logo.src} alt={d.logoAlt} width={logo.ancho} height={logo.alto} priority className="destacado__logo" />
           <p className="destacado__bajada">{d.bajada}</p>
           <div className="botones">
             <Link href={`/${lang}/mansion#jugar`} className="boton">

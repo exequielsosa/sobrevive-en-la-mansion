@@ -2,7 +2,6 @@ import Image from 'next/image';
 import type { Textos } from '@/lib/textos-mansion';
 
 const llaves = ['/img/llave_1.png', '/img/llave_2.png', '/img/llave_3.png'];
-const capturas = ['/img/captura_piso3.jpg', '/img/captura_piso2.jpg', '/img/captura_piso1.jpg'];
 
 export default function Historia({ t }: { t: Textos }) {
   const h = t.historia;
@@ -39,9 +38,9 @@ export default function Historia({ t }: { t: Textos }) {
       </div>
 
       <div className="contenedor capturas">
-        {h.capturas.map((c, i) => (
+        {h.capturas.map((c) => (
           <figure key={c.pie} className="captura">
-            <Image src={capturas[i]} alt={c.alt} width={854} height={480} sizes="(max-width: 760px) 100vw, 420px" />
+            <Image src={c.imagen} alt={c.alt} width={854} height={480} sizes="(max-width: 760px) 100vw, 420px" />
             <figcaption>{c.pie}</figcaption>
           </figure>
         ))}

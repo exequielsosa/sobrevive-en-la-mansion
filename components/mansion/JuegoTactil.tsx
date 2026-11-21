@@ -8,6 +8,9 @@
 // nuevas para jugar en el celular. El juego se abre con ?tactil=1 para que cambie los textos que
 // hablan de teclas (eso lo hace el juego desde la versión 21).
 //
+// En la página en inglés también se le agrega ?idioma=en: desde la versión 27-07 el juego tiene
+// todos sus textos en los dos idiomas y elige según eso (sin el parámetro, queda en castellano).
+//
 // Para saber en qué pantalla está el juego (y si está en pausa) la página le pregunta al motor de
 // Construct 2 (cr_getC2Runtime). Los botones de caminar, saltar y pegar solo aparecen en los pisos;
 // en la pausa aparecen SEGUIR y MENÚ encima del juego. Mientras se ve una historieta (desde la
@@ -16,6 +19,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { PointerEvent as EventoPuntero } from 'react';
 import type { Textos } from '@/lib/textos-mansion';
+import type { Idioma } from '@/lib/idiomas';
 
 type Tecla = 'izquierda' | 'derecha' | 'saltar' | 'cruz' | 'gomera' | 'pausa' | 'menu';
 
@@ -30,7 +34,7 @@ const TECLAS: Record<Tecla, { keyCode: number; key: string; code: string }> = {
   menu: { keyCode: 77, key: 'm', code: 'KeyM' },
 };
 
-type VentanaJuego = Window & typeof globalThis & { cr_getC2Runtime?: () => unknown };
+export type VentanaJuego = Window & typeof globalThis & { cr_getC2Runtime?: () => unknown };
 type Motor = { running_layout?: { name?: unknown } | null; all_global_vars?: { name: string; data: unknown }[] };
 
 // "cargando": el juego todavía no arrancó. "leido": sabemos la pantalla y la pausa.
@@ -55,6 +59,26 @@ function leerJuego(w: VentanaJuego | null | undefined): Estado {
   }
 }
 
+// Le "aprieta" o "suelta" una tecla al juego, como si viniera del teclado.
+function mandarTecla(w: VentanaJuego, tipo: 'keydown' | 'keyup', tecla: Tecla) {
+  const { keyCode, key, code } = TECLAS[tecla];
+  const evento = new w.KeyboardEvent(tipo, { key, code, bubbles: true, cancelable: true });
+  // Construct 2 lee "which" / "keyCode", que los eventos creados a mano traen en 0.
+  Object.defineProperty(evento, 'keyCode', { get: () => keyCode });
+  Object.defineProperty(evento, 'which', { get: () => keyCode });
+  w.document.dispatchEvent(evento);
+}
+
+// En la compu: si el jugador hace clic afuera del juego, el juego deja de recibir las teclas.
+// Para que no lo lastimen sin poder moverse, la página lo pone en PAUSA (le manda ESC), pero solo si
+// está jugando en un piso: no en el menú, ni en una historieta, ni si ya estaba en pausa.
+export function pausarSiJuega(w: VentanaJuego | null | undefined) {
+  const e = leerJuego(w);
+  if (!w || e.modo !== 'leido' || !e.enPiso || e.pausa || e.historieta) return;
+  mandarTecla(w, 'keydown', 'pausa');
+  mandarTecla(w, 'keyup', 'pausa');
+}
+
 // Pantalla completa y celular acostado (en Android; el iPhone no deja, ahí avisa "Girá el celular").
 // Se llama desde el toque en "Tocá para jugar", porque el navegador solo lo permite después de un toque.
 export function abrirPantallaCompleta() {
@@ -75,7 +99,16 @@ export function cerrarPantallaCompleta() {
   if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
 }
 
-export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSalir: () => void }) {
+// La dirección del juego: ?tactil=1 en el celular y ?idioma=en en la página en inglés.
+export function direccionJuego(lang: Idioma, tactil: boolean): string {
+  const params = new URLSearchParams();
+  if (tactil) params.set('tactil', '1');
+  if (lang === 'en') params.set('idioma', 'en');
+  const q = params.toString();
+  return q ? `/juego/index.html?${q}` : '/juego/index.html';
+}
+
+export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; lang: Idioma; onSalir: () => void }) {
   const b = t.tactil;
   const juego = useRef<HTMLIFrameElement>(null);
   const [estado, setEstado] = useState<Estado>({ modo: 'cargando', enPiso: false, pausa: false, historieta: false });
@@ -90,13 +123,7 @@ export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSali
   // ---------- teclas para el juego
   const mandar = useCallback((tipo: 'keydown' | 'keyup', tecla: Tecla) => {
     const w = juego.current?.contentWindow as VentanaJuego | null;
-    if (!w) return;
-    const { keyCode, key, code } = TECLAS[tecla];
-    const evento = new w.KeyboardEvent(tipo, { key, code, bubbles: true, cancelable: true });
-    // Construct 2 lee "which" / "keyCode", que los eventos creados a mano traen en 0.
-    Object.defineProperty(evento, 'keyCode', { get: () => keyCode });
-    Object.defineProperty(evento, 'which', { get: () => keyCode });
-    w.document.dispatchEvent(evento);
+    if (w) mandarTecla(w, tipo, tecla);
   }, []);
 
   const tocar = useCallback(
@@ -159,17 +186,14 @@ export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSali
     tocar('menu');
   }
 
-  // Si gira el celular a vertical o se va a otra app -> pausa sola.
+  // Si gira el celular a vertical -> pausa sola.
+  // Si se va a otra app o a otra pestaña, el juego se pausa solo (desde la versión 27-08). La página ya no le
+  // manda ESC en ese caso: si lo hiciera, la sacaría de la pausa que el juego acaba de poner.
   useEffect(() => {
     const vertical = window.matchMedia('(orientation: portrait)');
     const alGirar = () => vertical.matches && pausar();
-    const alOcultar = () => document.hidden && pausar();
     vertical.addEventListener('change', alGirar);
-    document.addEventListener('visibilitychange', alOcultar);
-    return () => {
-      vertical.removeEventListener('change', alGirar);
-      document.removeEventListener('visibilitychange', alOcultar);
-    };
+    return () => vertical.removeEventListener('change', alGirar);
   }, [pausar]);
 
   // La página no se mueve mientras se juega.
@@ -294,7 +318,7 @@ export default function JuegoTactil({ t, onSalir }: { t: Textos['jugar']; onSali
         <div className="tactil__pantalla">
           <iframe
             ref={juego}
-            src="/juego/index.html?tactil=1"
+            src={direccionJuego(lang, true)}
             title={t.iframeTitulo}
             allow="autoplay; fullscreen"
             onLoad={alCargar}

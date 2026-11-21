@@ -1,11 +1,20 @@
-// El nombre del estudio escrito con letras: "EMI" gruesa y "STUDIO" finita y separada.
-// Se usa chico en la barra y gigante en el pie. (Si Emi dibuja un logo, se cambia acá.)
+// El logo de Emi Studio, dibujado por Emi: el horizontal (chico) en la barra y el vertical (grande) en el pie.
+// No lleva texto alternativo: en la barra el link ya dice "Emi Studio, inicio" y en el pie es solo para ver.
+
+import Image from 'next/image';
+import { LOGO_ESTUDIO } from '@/lib/logos';
 
 export default function Marca({ gigante = false }: { gigante?: boolean }) {
+  const logo = gigante ? LOGO_ESTUDIO.vertical : LOGO_ESTUDIO.horizontal;
   return (
-    <span className={gigante ? 'marca marca--gigante' : 'marca'}>
-      <span className="marca__emi">EMI</span>
-      <span className="marca__studio">STUDIO</span>
-    </span>
+    <Image
+      src={logo.src}
+      alt=""
+      width={logo.ancho}
+      height={logo.alto}
+      priority={!gigante}
+      sizes={gigante ? '(max-width: 600px) 70vw, 360px' : '220px'}
+      className={gigante ? 'marca marca--gigante' : 'marca'}
+    />
   );
 }

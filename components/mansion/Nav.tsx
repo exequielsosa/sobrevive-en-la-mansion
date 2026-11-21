@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idiomas';
 import type { Textos } from '@/lib/textos-mansion';
+import { LOGO_JUEGO, conAlto } from '@/lib/logos';
 
 export default function Nav({ t, lang }: { t: Textos; lang: Idioma }) {
   const [abierto, setAbierto] = useState(false);
@@ -17,7 +18,7 @@ export default function Nav({ t, lang }: { t: Textos; lang: Idioma }) {
     <header className="nav">
       <nav aria-label={t.nav.aria} className="nav__dentro">
         <a href="#inicio" className="nav__logo" onClick={cerrar}>
-          <Image src="/img/logo.png" alt={t.portada.logoAlt} width={87} height={44} priority />
+          <Image src={LOGO_JUEGO[lang].src} alt={t.portada.logoAlt} {...conAlto(LOGO_JUEGO[lang], 80)} priority />
         </a>
         <div id="nav-links" className={abierto ? 'nav__links nav__links--abierto' : 'nav__links'}>
           <a href="#historia" onClick={cerrar}>{t.nav.historia}</a>

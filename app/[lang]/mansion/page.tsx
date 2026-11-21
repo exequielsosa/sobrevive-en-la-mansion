@@ -45,12 +45,12 @@ export default async function Pagina({ params }: Props) {
     <>
       <Nav t={t} lang={lang} />
       <main>
-        <Portada t={t} />
+        <Portada t={t} lang={lang} />
         <Historia t={t} />
         <Personajes t={t} />
         <Jefes t={t} />
         <ComoSeJuega t={t} />
-        <Jugar t={t} />
+        <Jugar t={t} lang={lang} />
       </main>
       <Creditos t={t} lang={lang} />
       <DatosEstructurados datos={datosMansion(lang, t.meta.descripcion)} />

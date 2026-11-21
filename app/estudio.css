@@ -15,20 +15,16 @@
   color: var(--e-texto);
 }
 
-/* ---------- el nombre del estudio ---------- */
-.marca { display: inline-flex; align-items: baseline; gap: 0.45em; font-family: var(--ancha); font-stretch: 125%; line-height: 1; letter-spacing: 0.02em; color: var(--e-texto); }
-.marca__emi { font-weight: 900; }
-.marca__studio { font-weight: 300; letter-spacing: 0.28em; }
-/* En el pie ocupa todo el ancho: el tamaño de la letra sale del ancho de la caja que la contiene
-   (cqi = 1% de ese ancho). "EMI STUDIO" mide unas 8,6 veces el tamaño de la letra. */
-.pie__marca { container-type: inline-size; }
-.marca--gigante { display: flex; justify-content: space-between; white-space: nowrap; font-size: calc(100cqi / 8.8); line-height: 0.82; letter-spacing: -0.01em; }
-.marca--gigante .marca__studio { letter-spacing: 0.2em; margin-right: -0.2em; }
+/* ---------- el logo del estudio ---------- */
+/* En la barra, el horizontal con alto fijo; en el pie, el vertical centrado. */
+.marca { display: block; height: 104px; width: auto; }
+.pie__marca { display: flex; justify-content: center; }
+.marca--gigante { height: auto; width: min(360px, 70%); }
 
 /* ---------- barra ---------- */
 .barra { background: var(--e-fondo); border-bottom: 1px solid var(--e-linea); }
-.barra__dentro { max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 12px 32px; }
-.barra__marca { display: inline-flex; align-items: center; min-height: 44px; font-size: 22px; text-decoration: none; }
+.barra__dentro { max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 12px 32px; }
+.barra__marca { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 .barra__links { margin-left: auto; display: flex; gap: 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 .barra__links a { color: var(--e-texto); text-decoration: none; padding: 12px 0; }
 .barra__links a:hover { color: var(--vela); }
@@ -95,7 +91,7 @@
 
 /* ---------- pie ---------- */
 .pie { background: var(--e-fondo-2); border-top: 1px solid var(--e-linea); }
-.pie__dentro { max-width: 1280px; margin: 0 auto; padding: 88px 24px 32px; display: flex; flex-direction: column; gap: 28px; }
+.pie__dentro { max-width: 1280px; margin: 0 auto; padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 28px; }
 .pie__abajo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding-top: 22px; border-top: 1px solid var(--e-linea); font-size: 13px; color: var(--e-gris); }
 .pie__links { display: flex; flex-wrap: wrap; gap: 0 24px; letter-spacing: 0.12em; text-transform: uppercase; }
 .pie__links a { color: var(--e-texto-2); text-decoration: none; padding: 12px 0; }
@@ -110,10 +106,10 @@
   .destacado__contenido { padding-top: 200px; padding-bottom: 56px; }
   .destacado__bajada { font-size: 18px; }
   .ficha__texto { padding: 24px; }
-  .pie__dentro { padding: 64px 16px 24px; }
+  .pie__dentro { padding: 40px 16px 24px; }
 }
 @media (max-width: 600px) {
   .barra__dentro { justify-content: space-between; padding: 10px 16px; }
   .barra__links { display: none; }
-  .barra__marca { font-size: 18px; }
+  .marca:not(.marca--gigante) { height: 68px; }
 }

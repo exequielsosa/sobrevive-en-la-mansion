@@ -8,15 +8,20 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import type { Textos } from '@/lib/textos-mansion';
+import type { Idioma } from '@/lib/idiomas';
+import { LOGO_JUEGO } from '@/lib/logos';
+import { captura } from '@/lib/capturas';
 import { IconoPantallaCompleta, IconoPlay } from '../Iconos';
-import JuegoTactil, { abrirPantallaCompleta, cerrarPantallaCompleta } from './JuegoTactil';
+import JuegoTactil, { abrirPantallaCompleta, cerrarPantallaCompleta, direccionJuego, pausarSiJuega } from './JuegoTactil';
+import type { VentanaJuego } from './JuegoTactil';
 
-export default function Jugar({ t }: { t: Textos }) {
+export default function Jugar({ t, lang }: { t: Textos; lang: Idioma }) {
   const j = t.jugar;
   const [jugando, setJugando] = useState(false);
   const [tactil, setTactil] = useState(false);
   const [jugandoTactil, setJugandoTactil] = useState(false);
   const juego = useRef<HTMLIFrameElement>(null);
+  const sinPausa = useRef(false); // el clic en "Pantalla completa" no pausa
 
   // Celulares y tablets: pantalla táctil, sin mouse.
   useEffect(() => {
@@ -38,13 +43,24 @@ export default function Jugar({ t }: { t: Textos }) {
   }
 
   // Cuando el juego termina de cargar, le damos el foco para que reciba el teclado.
+  // Si después pierde el foco (clic afuera del juego, otra ventana), queda en PAUSA: ver pausarSiJuega.
   function alCargar() {
     juego.current?.focus();
-    juego.current?.contentWindow?.focus();
+    const w = juego.current?.contentWindow as VentanaJuego | null;
+    w?.focus();
+    w?.addEventListener('blur', () => {
+      if (sinPausa.current) {
+        sinPausa.current = false;
+        return;
+      }
+      pausarSiJuega(w);
+    });
   }
 
   function pantallaCompleta() {
     juego.current?.requestFullscreen?.();
+    juego.current?.contentWindow?.focus();
+    sinPausa.current = false;
   }
 
   return (
@@ -57,7 +73,7 @@ export default function Jugar({ t }: { t: Textos }) {
           {jugando ? (
             <iframe
               ref={juego}
-              src="/juego/index.html"
+              src={direccionJuego(lang, false)}
               title={j.iframeTitulo}
               allow="autoplay; fullscreen"
               allowFullScreen
@@ -66,9 +82,9 @@ export default function Jugar({ t }: { t: Textos }) {
             />
           ) : (
             <>
-              <Image src="/img/captura_piso3.jpg" alt="" fill sizes="(max-width: 1100px) 100vw, 1100px" className="jugar__fondo" />
+              <Image src={captura(lang, 3)} alt="" fill sizes="(max-width: 1100px) 100vw, 1100px" className="jugar__fondo" />
               <div className="jugar__portada">
-                <Image src="/img/logo.png" alt="" width={705} height={358} className="jugar__logo" />
+                <Image src={LOGO_JUEGO[lang].src} alt="" width={LOGO_JUEGO[lang].ancho} height={LOGO_JUEGO[lang].alto} className="jugar__logo" />
                 <button type="button" className="boton boton--grande" onClick={empezar}>
                   <IconoPlay />
                   {tactil ? j.tactil.boton : j.boton}
@@ -83,14 +99,14 @@ export default function Jugar({ t }: { t: Textos }) {
             <span key={n}>{n}</span>
           ))}
           {jugando && (
-            <button type="button" className="boton-texto" onClick={pantallaCompleta}>
+            <button type="button" className="boton-texto" onPointerDown={() => (sinPausa.current = true)} onClick={pantallaCompleta}>
               <IconoPantallaCompleta />
               {j.pantallaCompleta}
             </button>
           )}
         </div>
       </div>
-      {jugandoTactil && <JuegoTactil t={j} onSalir={salirTactil} />}
+      {jugandoTactil && <JuegoTactil t={j} lang={lang} onSalir={salirTactil} />}
     </section>
   );
 }

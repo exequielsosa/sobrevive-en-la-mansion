@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t.descripcion,
       url: `/${lang}`,
       siteName: NOMBRE_ESTUDIO,
-      images: [{ url: '/og-estudio.jpg', width: 1200, height: 630 }],
+      images: [{ url: lang === 'en' ? '/og-estudio-en.jpg' : '/og-estudio.jpg', width: 1200, height: 630 }],
       locale: lang === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
     },

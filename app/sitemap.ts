@@ -4,7 +4,7 @@
 import type { MetadataRoute } from 'next';
 import { URL_SITIO } from '@/lib/sitio';
 
-const rutas = ['', '/mansion'];
+const rutas = ['', '/mansion', '/privacidad'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return rutas.flatMap((ruta) =>

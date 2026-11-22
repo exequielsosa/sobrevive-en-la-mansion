@@ -20,6 +20,8 @@ export default function Creditos({ t, lang }: { t: Textos; lang: Idioma }) {
         </div>
         <div className="creditos__abajo">
           <span>{c.capitulo}</span>
+          {/* La política de privacidad (la pide Google Play para la app). */}
+          <Link href={`/${lang}/privacidad`} className="creditos__estudio">{lang === 'es' ? 'Privacidad' : 'Privacy'}</Link>
           {/* Vuelve a la portada del estudio. */}
           <Link href={`/${lang}`} className="creditos__estudio">Emi Studio</Link>
         </div>

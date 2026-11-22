@@ -217,6 +217,10 @@ a:hover { color: var(--vela-clara); }
   .camino__numero { flex-basis: 40px; font-size: 36px; }
 }
 
+/* ---------- política de privacidad ---------- */
+.privacidad { display: flex; flex-direction: column; gap: 18px; max-width: 760px; }
+.privacidad section { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+
 /* ---------- el juego solo (/es/jugar, /en/jugar): lo que abre la app instalada ---------- */
 .solo { position: fixed; inset: 0; overflow: hidden; background: #000; }
 .solo__fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: blur(2px); }

@@ -51,7 +51,9 @@ link corto para compartir el juego.
 3. Correr `npm run preparar-juego`. Arregla el nombre de la fuente (Construct la exporta en
    minúsculas y en el servidor no la encuentra), pone el nombre del juego en la pestaña y cambia
    los íconos de Construct por la cruz, y copia la licencia de la fuente Creepster
-   (`public/fuentes/LICENCIA_OFL.txt`), que tiene que ir con la fuente.
+   (`public/fuentes/LICENCIA_OFL.txt`), que tiene que ir con la fuente. También arregla el juego sin
+   internet: agrega `index.html` a `offline.js` y hace que el service worker de Construct encuentre la
+   página aunque lleve `?tactil=1` o `?idioma=en`.
 4. Revisar que en la pantalla de Créditos del juego diga lo que corresponde.
 
 El juego se carga recién cuando alguien toca **"Hacé clic para jugar"**: así la página abre rápido

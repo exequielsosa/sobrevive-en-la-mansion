@@ -345,7 +345,7 @@ async function HandleFetch(event, doUpdateCheck)
 	
 	const useCacheName = await GetCacheNameToUse(availableCacheNames, doUpdateCheck);
 	const cache = await caches.open(useCacheName);
-	const cachedResponse = await cache.match(event.request);
+	const cachedResponse = await cache.match(event.request, { ignoreSearch: event.request.mode === "navigate" });
 	
 	if (cachedResponse)
 		return cachedResponse;		// use cached response

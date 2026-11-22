@@ -6,3 +6,5 @@ next-env.d.ts
 .vercel
 .env*
 .DS_Store
+# App de Android: www/ se arma con "npm run armar" (copia del juego y la página)
+app-android/www/

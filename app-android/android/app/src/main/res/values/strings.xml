@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Survive the Mansion</string>
+    <string name="title_activity_main">Survive the Mansion</string>
+    <string name="package_name">ar.com.emistudio.mansion</string>
+    <string name="custom_url_scheme">ar.com.emistudio.mansion</string>
+</resources>

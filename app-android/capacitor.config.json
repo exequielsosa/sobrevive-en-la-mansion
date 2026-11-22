@@ -1,0 +1,8 @@
+{
+  "appId": "ar.com.emistudio.mansion",
+  "appName": "Survive the Mansion",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#000000"
+  }
+}

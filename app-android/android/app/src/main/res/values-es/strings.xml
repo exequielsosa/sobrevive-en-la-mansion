@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!-- Castellano: teléfonos en castellano. En cualquier otro idioma se usa values/strings.xml (inglés). -->
+    <string name="app_name">Sobrevive en la mansión</string>
+    <string name="title_activity_main">Sobrevive en la mansión</string>
+</resources>

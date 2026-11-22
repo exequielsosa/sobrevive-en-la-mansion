@@ -14,7 +14,7 @@ reglas de Familias de Google no permiten apps que solo muestran una web (ver `cl
 | `armar-www.mjs` | Arma `www/` (no va a git): la pantalla, una copia de `public/juego` con el service worker de Construct apagado, imágenes y fuentes. |
 | `capacitor.config.json` | Nombre y paquete: **`ar.com.emistudio.mansion`**. El paquete no se puede cambiar después de subir la app a Play. |
 | `android/` | El proyecto de Android Studio. Cambios propios: `MainActivity.java` (pantalla completa y pausa al salir), `AndroidManifest.xml` (horizontal y vibración), `res/values-es/strings.xml` (nombre en castellano), íconos y splash. |
-| `herramientas/iconos_android.py` | Rearma los íconos y el splash desde un ícono maestro. **Los de ahora son provisorios** (la cruz): el definitivo sale de ARTE-0006. |
+| `herramientas/iconos_android.py` | Rearma los íconos y el splash desde un ícono maestro. El maestro es `herramientas/icono-maestro.png`: ARTE-0006 r02, aprobado por Exequiel el 2026-11-22. |
 
 ## Armar y probar (en la PC)
 

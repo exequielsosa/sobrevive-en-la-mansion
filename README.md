@@ -94,6 +94,6 @@ Desde la página de la mansión o desde `/jugar`, el navegador ofrece **Instalar
 - `public/jugar-sw.js`: guarda la página para que la app abra sin internet. El juego lo guarda aparte el
   service worker de Construct (`/juego/sw.js`). Si alguna vez hay que borrar lo guardado en todos los aparatos,
   se cambia `CACHE` en ese archivo.
-- `public/app/`: los íconos de la app. **Los de ahora son provisorios** (la cruz del juego): el ícono nuevo
-  es el pedido de arte ARTE-0006, que elige Emi.
+- `public/app/`: los íconos de la app, sacados del ícono de ARTE-0006 r02 (la cruz sobre carbonilla),
+  aprobado por Exequiel el 2026-11-22. El original de 1024 px está en `app-android/herramientas/icono-maestro.png`.
 

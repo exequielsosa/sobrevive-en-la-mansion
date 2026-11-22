@@ -64,7 +64,7 @@ Los nombres de los jefes en inglés (the Shadow, the Stalker, the Psycho) son lo
 
 | Pieza | Estado |
 |---|---|
-| Ícono 512×512 | **FALTA**: sale de ARTE-0006 (elige Emi). Claude lo arma con `herramientas/iconos_android.py` y para la web. |
+| Ícono 512×512 | Listo: `play/icono-play-512.png` (PNG de 32 bits), de ARTE-0006 r02, aprobado por Exequiel el 2026-11-22 («si la aprobamos»). |
 | Gráfico destacado 1024×500 | **FALTA**: no se puede armar bien recortando la portada (tiene los marcos de los botones). Propuesta: pedido de arte ARTE-0007 a Codex, después del ícono. |
 | Capturas del teléfono | 6 por idioma en `capturas/es` y `capturas/en`: menú, dificultad, piso 3, piso 2, logros (1920×1080) y el juego con los botones táctiles (1920×960, 2:1). Sacadas del juego 27-14 con el motor. Los logros y el mejor tiempo de esa captura están puestos a mano para que se vean. Se pueden reemplazar por capturas propias del celular. |
 

@@ -7,8 +7,8 @@
 
 import type { Idioma } from './idiomas';
 
-// Mail de contacto para consultas de privacidad (Google Play exige uno). FALTA: lo tiene que dar Exequiel.
-export const CONTACTO_PRIVACIDAD = '';
+// Mail de contacto para consultas de privacidad (Google Play exige uno). Lo dio Exequiel el 2026-11-22.
+export const CONTACTO_PRIVACIDAD = 'exequielsosa@gmail.com';
 
 type Seccion = { titulo: string; parrafos: string[] };
 export type TextosPrivacidad = {

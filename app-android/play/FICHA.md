@@ -8,12 +8,12 @@ Todo lo que dice el texto está comprobado en el juego 27-14; lo que falta decid
 | Campo | Valor |
 |---|---|
 | Nombre (castellano) | Sobrevive en la mansión (23 de 30 caracteres) |
-| Nombre (inglés) | Survive the Mansion (19 de 30) |
+| Nombre (inglés) | Survive the Mansion (19 de 30). Nombre corto en el celular: The Mansion (Exequiel: «Ok»). |
 | Paquete | `ar.com.emistudio.mansion` (no se puede cambiar después de la primera subida) |
 | Nombre del desarrollador | Emi Studio. Play muestra además el nombre legal de Exequiel, el país y el mail de desarrollador. |
-| Tipo | Juego. Categoría sugerida: Aventura (**FALTA** confirmar; también puede ser Acción). Etiquetas: plataformas, terror. |
+| Tipo | Juego, categoría Aventura (Exequiel: «ok», 2026-11-22). Etiquetas: plataformas, terror. |
 | Precio | Gratis. Sin anuncios y sin compras. |
-| Política de privacidad | `https://www.emistudio.com.ar/es/privacidad` (y `/en/privacidad`). **FALTA** el mail de contacto. |
+| Política de privacidad | `https://www.emistudio.com.ar/es/privacidad` (y `/en/privacidad`). Contacto: exequielsosa@gmail.com. |
 | Idioma principal de la ficha | Español (Latinoamérica), con la traducción en inglés (Estados Unidos). |
 
 ## Textos

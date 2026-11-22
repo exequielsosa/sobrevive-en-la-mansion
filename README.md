@@ -85,9 +85,10 @@ Desde la página de la mansión o desde `/jugar`, el navegador ofrece **Instalar
 
 - `/jugar` es el link corto: lleva a `/es/jugar` si el navegador está en castellano y a `/en/jugar` en
   cualquier otro idioma (al revés que `/` y `/mansion`, que solo van al inglés si el navegador está en inglés).
-- `components/mansion/SoloJuego.tsx`: la portada con «Tocá / Hacé clic para jugar» y el juego. En el celular
-  usa `JuegoTactil` (los mismos botones); en la compu el juego ocupa toda la ventana y se pausa si pierde el foco.
-  No tiene links a otras páginas.
+- `components/mansion/SoloJuego.tsx`: arranca directo en la pantalla de carga del juego («TOCÁ / HACÉ CLIC
+  PARA EMPEZAR»), sin portada propia. En el celular usa `JuegoTactil` (los mismos botones, sin la X de salir:
+  el «atrás» del celular cierra la app); en la compu el juego ocupa toda la ventana y se pausa si pierde el
+  foco. No tiene links a otras páginas.
 - `public/manifest-es.webmanifest` y `public/manifest-en.webmanifest`: nombre, íconos, pantalla completa y
   horizontal. Se enlazan desde `/jugar` y desde la página de la mansión (por eso ahí también se puede instalar).
 - `public/jugar-sw.js`: guarda la página para que la app abra sin internet. El juego lo guarda aparte el

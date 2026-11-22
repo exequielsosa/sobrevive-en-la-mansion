@@ -3,9 +3,11 @@
 // El juego solo, a pantalla completa: es la página /es/jugar y /en/jugar, la que abre la app instalada
 // (y la que va adentro de la app de Android). No tiene barra ni links a otras páginas.
 //
-// - Primero muestra una portada con "Tocá para jugar" / "Hacé clic para jugar": hace falta un toque o
-//   un clic para que el navegador deje sonar el audio y pasar a pantalla completa.
-// - En el celular usa JuegoTactil, el mismo de la página de la mansión (botones a los costados).
+// - Arranca directo en la pantalla de carga del juego («TOCÁ / HACÉ CLIC PARA EMPEZAR»): ese toque es el
+//   que deja sonar el audio. Sin portada propia (Exequiel, 2026-11-22: «la A»). La app instalada y la de
+//   Play ya abren a pantalla completa y acostadas, así que no hace falta pedirlo con un toque.
+// - En el celular usa JuegoTactil, el mismo de la página de la mansión (botones a los costados), pero sin
+//   la X de salir: el «atrás» del celular cierra la app.
 // - En la compu el juego ocupa toda la ventana y se juega con el teclado; si la ventana pierde el foco,
 //   el juego queda en pausa (igual que en la página de la mansión).
 // - Si se le pasa conServiceWorker, registra /jugar-sw.js para que la página abra sin internet
@@ -14,16 +16,10 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Textos } from '@/lib/textos-mansion';
 import type { Idioma } from '@/lib/idiomas';
-import { LOGO_JUEGO } from '@/lib/logos';
-import { captura } from '@/lib/capturas';
-import { IconoPlay } from '../Iconos';
-import JuegoTactil, { abrirPantallaCompleta, cerrarPantallaCompleta, direccionJuego, pausarSiJuega } from './JuegoTactil';
+import JuegoTactil, { direccionJuego, pausarSiJuega } from './JuegoTactil';
 import type { VentanaJuego } from './JuegoTactil';
 
-type Modo = 'portada' | 'compu' | 'tactil';
-
 export default function SoloJuego({ t, lang, conServiceWorker = false }: { t: Textos['jugar']; lang: Idioma; conServiceWorker?: boolean }) {
-  const [modo, setModo] = useState<Modo>('portada');
   const [tactil, setTactil] = useState<boolean | null>(null); // null: todavía no se sabe
   const juego = useRef<HTMLIFrameElement>(null);
 
@@ -36,20 +32,6 @@ export default function SoloJuego({ t, lang, conServiceWorker = false }: { t: Te
     if (conServiceWorker) registrarServiceWorker(lang);
   }, [conServiceWorker, lang]);
 
-  function empezar() {
-    if (tactil) {
-      abrirPantallaCompleta();
-      setModo('tactil');
-    } else {
-      setModo('compu');
-    }
-  }
-
-  function salirTactil() {
-    cerrarPantallaCompleta();
-    setModo('portada');
-  }
-
   // En la compu: foco al juego para que reciba el teclado, y pausa si después lo pierde.
   function alCargar() {
     const w = juego.current?.contentWindow as VentanaJuego | null;
@@ -58,36 +40,11 @@ export default function SoloJuego({ t, lang, conServiceWorker = false }: { t: Te
     w?.addEventListener('blur', () => pausarSiJuega(w));
   }
 
-  if (modo === 'tactil') return <JuegoTactil t={t} lang={lang} onSalir={salirTactil} />;
-
-  if (modo === 'compu') {
-    return (
-      <div className="solo">
-        <iframe ref={juego} src={direccionJuego(lang, false)} title={t.iframeTitulo} allow="autoplay; fullscreen" allowFullScreen onLoad={alCargar} className="solo__juego" />
-      </div>
-    );
-  }
-
-  const logo = LOGO_JUEGO[lang];
+  if (tactil === null) return <div className="solo" />;
+  if (tactil) return <JuegoTactil t={t} lang={lang} />;
   return (
     <div className="solo">
-      <img src={captura(lang, 3)} alt="" className="solo__fondo" />
-      <div className="solo__portada">
-        <img src={logo.src} alt={t.iframeTitulo} width={logo.ancho} height={logo.alto} className="solo__logo" />
-        {tactil !== null && (
-          <>
-            <button type="button" className="boton boton--grande" onClick={empezar}>
-              <IconoPlay />
-              {tactil ? t.tactil.boton : t.boton}
-            </button>
-            <p className="solo__notas">
-              {(tactil ? t.tactil.notas : t.notas).map((n) => (
-                <span key={n}>{n}</span>
-              ))}
-            </p>
-          </>
-        )}
-      </div>
+      <iframe ref={juego} src={direccionJuego(lang, false)} title={t.iframeTitulo} allow="autoplay; fullscreen" allowFullScreen onLoad={alCargar} className="solo__juego" />
     </div>
   );
 }

@@ -108,7 +108,9 @@ export function direccionJuego(lang: Idioma, tactil: boolean): string {
   return q ? `/juego/index.html?${q}` : '/juego/index.html';
 }
 
-export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; lang: Idioma; onSalir: () => void }) {
+// onSalir: qué hacer al tocar la X o el botón «atrás» del celular. Sin onSalir (la app instalada y la de Play)
+// no hay X ni se toca el «atrás»: el «atrás» del celular cierra la app, como en cualquier juego.
+export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; lang: Idioma; onSalir?: () => void }) {
   const b = t.tactil;
   const juego = useRef<HTMLIFrameElement>(null);
   const [estado, setEstado] = useState<Estado>({ modo: 'cargando', enPiso: false, pausa: false, historieta: false });
@@ -202,17 +204,19 @@ export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; 
     return () => document.documentElement.classList.remove('con-juego');
   }, []);
 
-  // El botón "atrás" del celular cierra el juego en vez de irse de la página.
+  // El botón "atrás" del celular cierra el juego en vez de irse de la página (solo si hay onSalir).
+  const conSalir = !!onSalir;
   const atrasAgregado = useRef(false);
   useEffect(() => {
+    if (!conSalir) return;
     if (!atrasAgregado.current) {
       window.history.pushState({ ...window.history.state, juego: true }, '');
       atrasAgregado.current = true;
     }
-    const alVolver = () => salirActual.current();
+    const alVolver = () => salirActual.current?.();
     window.addEventListener('popstate', alVolver);
     return () => window.removeEventListener('popstate', alVolver);
-  }, []);
+  }, [conSalir]);
 
   // Construct 2 cancela los toques sobre el juego, así que los botones del menú (JUGAR, VOLVER...)
   // no reciben el clic. Cuando se toca el juego, la página le manda un clic de mouse en ese lugar.
@@ -278,7 +282,7 @@ export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; 
 
   const clase = (tecla: Tecla, extra = '') =>
     `tactil__boton${extra}${marcadas.includes(tecla) ? ' tactil__boton--apretado' : ''}`;
-  const verSalir = !estado.enPiso || estado.pausa;
+  const verSalir = !!onSalir && (!estado.enPiso || estado.pausa);
 
   return (
     <div
@@ -374,7 +378,7 @@ export default function JuegoTactil({ t, lang, onSalir }: { t: Textos['jugar']; 
         <h2>{b.girarTitulo}</h2>
         <p>{b.girarTexto}</p>
         <p className="tactil__girar-detalle">{b.girarDetalle}</p>
-        <button type="button" className="boton-texto" onClick={() => window.history.back()}>{b.salir}</button>
+        {onSalir && <button type="button" className="boton-texto" onClick={() => window.history.back()}>{b.salir}</button>}
       </div>
     </div>
   );

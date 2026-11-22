@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       { source: '/', destination: '/es', permanent: false },
       { source: '/mansion', has: ingles, destination: '/en/mansion', permanent: false },
       { source: '/mansion', destination: '/es/mansion', permanent: false },
+      // /jugar (el juego solo, el que abre la app) usa la regla al revés, que decidió Exequiel el 2026-11-22:
+      // castellano solo si el navegador está en castellano; en cualquier otro idioma, inglés.
+      { source: '/jugar', has: [{ type: 'header', key: 'accept-language', value: '^es.*' }], destination: '/es/jugar', permanent: false },
+      { source: '/jugar', destination: '/en/jugar', permanent: false },
     ];
   },
 };

@@ -6,6 +6,7 @@ Sitio de **Emi Studio**, el estudio de Emi. Tiene dos páginas, en español (`/e
 |---|---|
 | `/es`, `/en` | La portada del estudio: el juego destacado, la lista de juegos y quién es Emi. |
 | `/es/mansion`, `/en/mansion` | La página de **Sobrevive en la mansión — Capítulo 1**: historia, personajes, cómo se juega y el juego para jugar en el navegador. |
+| `/es/jugar`, `/en/jugar` | **El juego solo**, a pantalla completa: es lo que abre la app instalada. No sale en los buscadores. |
 
 Cada juego nuevo va a tener su propia página adentro, como `/mansion`.
 
@@ -74,3 +75,22 @@ se abre en pantalla completa (`components/mansion/JuegoTactil.tsx`):
   juega, el juego se pausa solo. El botón "atrás" del celular cierra el juego.
 - Los botones redondos son de prueba. Para cambiarlos por dibujos de Emi: PNG de 192 × 192 con
   fondo transparente, en `public/img/`, y se reemplazan los íconos en `JuegoTactil.tsx`.
+
+## La app instalable (/jugar)
+
+Desde la página de la mansión o desde `/jugar`, el navegador ofrece **Instalar** (en el iPhone: Compartir →
+**Agregar a inicio**). La app instalada abre el juego solo, a pantalla completa y con el celular acostado.
+
+- `/jugar` es el link corto: lleva a `/es/jugar` si el navegador está en castellano y a `/en/jugar` en
+  cualquier otro idioma (al revés que `/` y `/mansion`, que solo van al inglés si el navegador está en inglés).
+- `components/mansion/SoloJuego.tsx`: la portada con «Tocá / Hacé clic para jugar» y el juego. En el celular
+  usa `JuegoTactil` (los mismos botones); en la compu el juego ocupa toda la ventana y se pausa si pierde el foco.
+  No tiene links a otras páginas.
+- `public/manifest-es.webmanifest` y `public/manifest-en.webmanifest`: nombre, íconos, pantalla completa y
+  horizontal. Se enlazan desde `/jugar` y desde la página de la mansión (por eso ahí también se puede instalar).
+- `public/jugar-sw.js`: guarda la página para que la app abra sin internet. El juego lo guarda aparte el
+  service worker de Construct (`/juego/sw.js`). Si alguna vez hay que borrar lo guardado en todos los aparatos,
+  se cambia `CACHE` en ese archivo.
+- `public/app/`: los íconos de la app. **Los de ahora son provisorios** (la cruz del juego): el ícono nuevo
+  es el pedido de arte ARTE-0006, que elige Emi.
+

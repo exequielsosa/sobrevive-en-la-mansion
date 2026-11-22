@@ -217,6 +217,17 @@ a:hover { color: var(--vela-clara); }
   .camino__numero { flex-basis: 40px; font-size: 36px; }
 }
 
+/* ---------- el juego solo (/es/jugar, /en/jugar): lo que abre la app instalada ---------- */
+.solo { position: fixed; inset: 0; overflow: hidden; background: #000; }
+.solo__fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: blur(2px); }
+.solo__portada {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; text-align: center;
+  padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+}
+.solo__logo { width: min(420px, 70vw, 60vh); height: auto; }
+.solo__notas { margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 24px; font-size: 14px; color: var(--texto-2); }
+.solo__juego { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
 /* ---------- el juego en el celular (JuegoTactil) ----------
    Toda la pantalla: el juego en el medio y los botones en las franjas negras de los costados. */
 @font-face { font-family: 'Creepster'; src: url('/fuentes/creepster.ttf') format('truetype'); font-display: swap; }

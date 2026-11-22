@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t.titulo,
     description: t.descripcion,
+    // "Instalar" desde esta página instala la app que abre /es/jugar o /en/jugar.
+    manifest: `/manifest-${lang}.webmanifest`,
     alternates: { canonical: `/${lang}/mansion`, languages: { es: '/es/mansion', en: '/en/mansion', 'x-default': '/es/mansion' } },
     openGraph: {
       title: t.titulo,
